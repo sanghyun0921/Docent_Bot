@@ -1,8 +1,0 @@
-[ 29%] Built target tb3_standalone_core
-[ 41%] Built target lifecycle_manager_node
-[ 52%] Built target a_star_planner_server
-[ 64%] Built target dwa_controller_server
-[ 76%] Built target ekf_node
-[35m[1mConsolidate compiler generated dependencies of target amcl_node[0m
-[ 82%] [32mBuilding CXX object CMakeFiles/amcl_node.dir/src/estimation/amcl_node.cpp.o[0m
-[ 88%] [32m[1mLinking CXX executable amcl_node[0m

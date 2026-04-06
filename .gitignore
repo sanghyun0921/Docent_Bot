@@ -41,3 +41,9 @@ MANIFEST
 *.db
 *.sqlite3
 *.sqlite
+
+# Logs
+*.log
+mydrive/log/
+mydrive/build/
+mydrive/install/

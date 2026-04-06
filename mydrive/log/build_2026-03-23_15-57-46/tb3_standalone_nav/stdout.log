@@ -1,7 +1,0 @@
-[ 29%] Built target tb3_standalone_core
-[ 41%] Built target lifecycle_manager_node
-[35m[1mConsolidate compiler generated dependencies of target dwa_controller_server[0m
-[ 52%] Built target a_star_planner_server
-[ 58%] [32mBuilding CXX object CMakeFiles/dwa_controller_server.dir/src/controller/dwa_controller_server.cpp.o[0m
-[ 70%] Built target ekf_node
-[ 82%] Built target amcl_node
