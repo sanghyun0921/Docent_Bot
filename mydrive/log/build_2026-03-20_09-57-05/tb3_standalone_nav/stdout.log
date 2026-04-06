@@ -1,0 +1,11 @@
+[ 33%] Built target tb3_standalone_core
+[35m[1mConsolidate compiler generated dependencies of target a_star_planner_server[0m
+[35m[1mConsolidate compiler generated dependencies of target dwa_controller_server[0m
+[ 46%] Built target a_star_planner_server
+[ 60%] Built target dwa_controller_server
+[35m[1mConsolidate compiler generated dependencies of target amcl_node[0m
+[35m[1mConsolidate compiler generated dependencies of target ekf_node[0m
+[ 73%] Built target ekf_node
+[ 86%] Built target amcl_node
+[35m[1mConsolidate compiler generated dependencies of target bt_navigator[0m
+[ 93%] [32mBuilding CXX object CMakeFiles/bt_navigator.dir/src/bt/bt_navigator.cpp.o[0m

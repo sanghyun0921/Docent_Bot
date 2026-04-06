@@ -1,0 +1,22 @@
+[01m[K/home/shcho/mydrivesim/src/tb3_standalone_nav/src/costmap/costmap_2d.cpp:[m[K In member function ‘[01m[Kvoid tb3_standalone_nav::costmap::Costmap2D::updateInflation(double, double, double)[m[K’:
+[01m[K/home/shcho/mydrivesim/src/tb3_standalone_nav/src/costmap/costmap_2d.cpp:77:10:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Ksq_cell_inscribed[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+   77 |   double [01;35m[Ksq_cell_inscribed[m[K = cell_inscribed_radius * cell_inscribed_radius;
+      |          [01;35m[K^~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/home/shcho/mydrivesim/src/tb3_standalone_nav/src/planner/a_star_planner_server.cpp:1[m[K:
+[01m[K/home/shcho/mydrivesim/src/tb3_standalone_nav/include/tb3_standalone_nav/planner/a_star_planner_server.hpp:16:10:[m[K [01;31m[Kfatal error: [m[Ksensor_msgs/msg/laser_scan.hpp: No such file or directory
+   16 | #include [01;31m[K"sensor_msgs/msg/laser_scan.hpp"[m[K
+      |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+compilation terminated.
+gmake[2]: *** [CMakeFiles/a_star_planner_server.dir/build.make:76: CMakeFiles/a_star_planner_server.dir/src/planner/a_star_planner_server.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:173: CMakeFiles/a_star_planner_server.dir/all] Error 2
+gmake[1]: *** Waiting for unfinished jobs....
+[01m[K/home/shcho/mydrivesim/src/tb3_standalone_nav/src/controller/dwa_controller_server.cpp:[m[K In member function ‘[01m[Kvoid tb3_standalone_nav::controller::DWAControllerServer::execute(std::shared_ptr<rclcpp_action::ServerGoalHandle<nav2_msgs::action::FollowPath> >)[m[K’:
+[01m[K/home/shcho/mydrivesim/src/tb3_standalone_nav/src/controller/dwa_controller_server.cpp:102:15:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing element_type = struct nav2_msgs::action::FollowPath_Result_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct nav2_msgs::action::FollowPath_Result_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kerror_code[m[K’
+  102 |       result->[01;31m[Kerror_code[m[K = 0;
+      |               [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/shcho/mydrivesim/src/tb3_standalone_nav/src/controller/dwa_controller_server.cpp:137:11:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing element_type = struct nav2_msgs::action::FollowPath_Result_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct nav2_msgs::action::FollowPath_Result_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kerror_code[m[K’
+  137 |   result->[01;31m[Kerror_code[m[K = 0;
+      |           [01;31m[K^~~~~~~~~~[m[K
+gmake[2]: *** [CMakeFiles/dwa_controller_server.dir/build.make:76: CMakeFiles/dwa_controller_server.dir/src/controller/dwa_controller_server.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:199: CMakeFiles/dwa_controller_server.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

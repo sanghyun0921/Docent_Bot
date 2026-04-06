@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>설문조사</title>
+
+  <!-- 외부 라이브러리 -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- 전용 스타일 및 스크립트 -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/survey.css') }}" />
+  <script src="{{ url_for('static', filename='js/survey.js') }}" defer></script>
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-8">
+  <div class="bg-white rounded-3xl shadow-2xl p-12 max-w-2xl w-full relative">
+    <h1 class="text-3xl font-bold text-gray-800 mb-8 text-center">
+      작품 추천을 위한 설문
+    </h1>
+
+    <div class="space-y-8" id="survey-form">
+      <!-- 나이 -->
+      <div>
+        <h3 class="text-xl font-semibold mb-4 text-gray-700">나이</h3>
+        <div class="space-y-3">
+          <label
+            class="survey-option flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 cursor-pointer border-2 border-transparent">
+            <input type="radio" name="age" value="10대" class="w-5 h-5 text-blue-600" />
+            <span class="text-lg flex-1">10대</span>
+          </label>
+          <label
+            class="survey-option flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 cursor-pointer border-2 border-transparent">
+            <input type="radio" name="age" value="20대" class="w-5 h-5 text-blue-600" />
+            <span class="text-lg flex-1">20대</span>
+          </label>
+          <label
+            class="survey-option flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 cursor-pointer border-2 border-transparent">
+            <input type="radio" name="age" value="30대" class="w-5 h-5 text-blue-600" />
+            <span class="text-lg flex-1">30대</span>
+          </label>
+          <label
+            class="survey-option flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 cursor-pointer border-2 border-transparent">
+            <input type="radio" name="age" value="40대" class="w-5 h-5 text-blue-600" />
+            <span class="text-lg flex-1">40대</span>
+          </label>
+          <label
+            class="survey-option flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 cursor-pointer border-2 border-transparent">
+            <input type="radio" name="age" value="50대" class="w-5 h-5 text-blue-600" />
+            <span class="text-lg flex-1">50대</span>
+          </label>
+          <label
+            class="survey-option flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 cursor-pointer border-2 border-transparent">
+            <input type="radio" name="age" value="60대이상" class="w-5 h-5 text-blue-600" />
+            <span class="text-lg flex-1">60대 이상</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- 성별 -->
+      <div>
+        <h3 class="text-xl font-semibold mb-4 text-gray-700">성별</h3>
+        <div class="space-y-3">
+          <label
+            class="survey-option flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 cursor-pointer border-2 border-transparent">
+            <input type="radio" name="gender" value="남성" class="w-5 h-5 text-blue-600" />
+            <span class="text-lg flex-1">남성</span>
+          </label>
+          <label
+            class="survey-option flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 cursor-pointer border-2 border-transparent">
+            <input type="radio" name="gender" value="여성" class="w-5 h-5 text-blue-600" />
+            <span class="text-lg flex-1">여성</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- 선호 장르 -->
+      <div>
+        <h3 class="text-xl font-semibold mb-4 text-gray-700">선호 장르</h3>
+        <div class="space-y-3">
+          <label
+            class="survey-option flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 cursor-pointer border-2 border-transparent">
+            <input type="radio" name="genre" value="인상주의" class="w-5 h-5 text-blue-600" />
+            <span class="text-lg flex-1">인상주의</span>
+          </label>
+          <label
+            class="survey-option flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 cursor-pointer border-2 border-transparent">
+            <input type="radio" name="genre" value="현대미술" class="w-5 h-5 text-blue-600" />
+            <span class="text-lg flex-1">현대미술</span>
+          </label>
+          <label
+            class="survey-option flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 cursor-pointer border-2 border-transparent">
+            <input type="radio" name="genre" value="표현주의" class="w-5 h-5 text-blue-600" />
+            <span class="text-lg flex-1">표현주의</span>
+          </label>
+          <label
+            class="survey-option flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 cursor-pointer border-2 border-transparent">
+            <input type="radio" name="genre" value="추상화" class="w-5 h-5 text-blue-600" />
+            <span class="text-lg flex-1">추상화</span>
+          </label>
+          <label
+            class="survey-option flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 cursor-pointer border-2 border-transparent">
+            <input type="radio" name="genre" value="사실주의" class="w-5 h-5 text-blue-600" />
+            <span class="text-lg flex-1">사실주의</span>
+          </label>
+          <label
+            class="survey-option flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 cursor-pointer border-2 border-transparent">
+            <input type="radio" name="genre" value="초현실주의" class="w-5 h-5 text-blue-600" />
+            <span class="text-lg flex-1">초현실주의</span>
+          </label>
+        </div>
+      </div>
+      <div>
+        <h3 class="text-xl font-semibold mb-4 text-gray-700">
+          오늘 나의 기분은?
+        </h3>
+        <div class="space-y-3">
+          <label
+            class="survey-option flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 cursor-pointer border-2 border-transparent">
+            <input type="radio" name="mood" value="힐링" class="w-5 h-5 text-blue-600" />
+            <span class="text-lg flex-1">지치고 위로받고 싶어요 (힐링)</span>
+          </label>
+          <label
+            class="survey-option flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 cursor-pointer border-2 border-transparent">
+            <input type="radio" name="mood" value="에너지" class="w-5 h-5 text-blue-600" />
+            <span class="text-lg flex-1">지루해서 자극이 필요해요 (에너지)</span>
+          </label>
+          <label
+            class="survey-option flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 cursor-pointer border-2 border-transparent">
+            <input type="radio" name="mood" value="안정" class="w-5 h-5 text-blue-600" />
+            <span class="text-lg flex-1">차분하게 집중하고 싶어요 (안정)</span>
+          </label>
+          <label
+            class="survey-option flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 cursor-pointer border-2 border-transparent">
+            <input type="radio" name="mood" value="즐거움" class="w-5 h-5 text-blue-600" />
+            <span class="text-lg flex-1">그냥 예쁜 게 보고 싶어요 (심미적 즐거움)</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- 버튼 -->
+    <div class="mt-10 space-y-4">
+      <button onclick="submitSurvey()"
+        class="flex items-center justify-center w-full h-16 text-xl bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-semibold">
+        <i data-lucide="check-circle-2" class="mr-3 w-7 h-7"></i>
+        선택 완료
+      </button>
+
+      <!-- navigateTo 함수에 { from: 'survey' }를 추가합니다 -->
+      <button onclick="startVoiceInSurvey()"
+        class="flex items-center justify-center w-full h-16 text-xl border-2 border-gray-300 bg-white text-gray-700 rounded-lg hover:bg-gray-50 font-semibold">
+        <i data-lucide="mic" class="mr-3 w-7 h-7"></i>
+        음성으로 선택하기
+      </button>
+      <!-- 3. 뒤로가기 버튼 추가 -->
+      <button onclick="goBack()"
+        class="flex items-center justify-center w-full h-14 text-lg border-2 border-gray-300 bg-white text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-bold">
+        <i data-lucide="arrow-left" class="mr-2 w-6 h-6"></i> 뒤로가기
+      </button>
+    </div>
+
+    <div id="voice-overlay"
+      class="hidden fixed bottom-0 left-0 w-full bg-blue-600 text-white p-6 shadow-2xl transition-all duration-300 z-50">
+      <div class="max-w-2xl mx-auto flex items-center justify-between">
+        <div class="flex items-center gap-4">
+          <div class="animate-pulse bg-red-500 w-4 h-4 rounded-full"></div>
+          <div>
+            <p id="voice-status" class="font-bold text-lg">듣고 있어요... (항목을 말씀해 주세요)</p>
+            <p id="voice-preview" class="text-blue-100 text-sm italic">인식된 내용이 여기에 표시됩니다.</p>
+          </div>
+        </div>
+        <button onclick="stopVoiceInSurvey()" class="bg-white text-blue-600 px-4 py-2 rounded-lg font-bold">중단</button>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

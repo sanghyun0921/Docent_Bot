@@ -1,0 +1,30 @@
+/* 버튼 클릭 시 시각적 피드백 */
+button {
+    transition: transform 0.1s ease-in-out, background-color 0.2s;
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+/* 아이콘 애니메이션 (선택 사항) */
+[data-lucide="bot"] {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+/* 배경 그래디언트 애니메이션 효과 */
+body {
+    background-size: 200% 200%;
+    animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}

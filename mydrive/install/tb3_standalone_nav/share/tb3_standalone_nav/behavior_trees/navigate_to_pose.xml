@@ -1,0 +1,33 @@
+<root main_tree_to_execute="MainTree">
+    <BehaviorTree ID="MainTree">
+        
+        <!-- 무한 반복: 성공할 때까지 계속 재시도 (최대 100번) -->
+        <RetryUntilSuccessful num_attempts="100">
+            
+            <Fallback name="Navigation_and_Recovery">
+                
+                <!-- 1지망: 정상적인 주행 시도 -->
+                <Sequence name="Navigate">
+                    <!-- A* 에게 경로를 짜달라고 요청 -->
+                    <ComputePathToPose goal="{goal}" path="{path}"/>
+                    <!-- 컨트롤러에게 주행을 명령 (막히면 여기서 Failure가 튀어나옴!) -->
+                    <FollowPath path="{path}"/>
+                </Sequence>
+
+                <!-- 2지망: 1지망이 막혀서 Failure가 났을 때 실행되는 대처(Recovery) -->
+                <Sequence name="Recovery">
+                    <!-- 길이 막혔으므로 1초간 정지하며 상황 파악 -->
+                    <Wait wait_duration="1.0"/>
+                    
+                    <!-- (선택) 여기에 후진(BackUp)이나 제자리 회전(Spin)을 넣을 수 있습니다 -->
+                    
+                    <!-- 무조건 실패를 반환하여 맨 위 RetryUntilSuccessful이 다시 A*를 부르도록 유도 -->
+                    <AlwaysFailure/>
+                </Sequence>
+
+            </Fallback>
+
+        </RetryUntilSuccessful>
+        
+    </BehaviorTree>
+</root>

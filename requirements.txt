@@ -1,0 +1,9 @@
+flask
+google-generativeai
+pyyaml
+pymysql
+flask-sqlalchemy
+pyopenssl
+paramiko
+Pillow
+python-dotenv

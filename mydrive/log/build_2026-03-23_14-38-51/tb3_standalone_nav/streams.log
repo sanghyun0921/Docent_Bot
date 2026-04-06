@@ -1,0 +1,60 @@
+[0.014s] Invoking command in '/home/shcho/mydrivesim/build/tb3_standalone_nav': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/shcho/mydrivesim/build/tb3_standalone_nav -- -j2 -l2
+[0.074s] [ 11%] Built target lifecycle_manager_node
+[0.074s] [ 41%] Built target tb3_standalone_core
+[0.099s] [ 52%] Built target a_star_planner_server
+[0.099s] [ 64%] Built target dwa_controller_server
+[0.114s] [35m[1mConsolidate compiler generated dependencies of target amcl_node[0m
+[0.132s] [ 76%] Built target ekf_node
+[0.132s] [ 82%] [32mBuilding CXX object CMakeFiles/amcl_node.dir/src/estimation/amcl_node.cpp.o[0m
+[0.157s] [ 94%] Built target bt_navigator
+[8.535s] [100%] [32m[1mLinking CXX executable amcl_node[0m
+[9.040s] [100%] Built target amcl_node
+[9.049s] Invoked command in '/home/shcho/mydrivesim/build/tb3_standalone_nav' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/shcho/mydrivesim/build/tb3_standalone_nav -- -j2 -l2
+[9.055s] Invoking command in '/home/shcho/mydrivesim/build/tb3_standalone_nav': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/shcho/mydrivesim/build/tb3_standalone_nav
+[9.061s] -- Install configuration: ""
+[9.062s] -- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/include
+[9.062s] -- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/include/tb3_standalone_nav
+[9.062s] -- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/include/tb3_standalone_nav/bt
+[9.062s] -- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/include/tb3_standalone_nav/bt/bt_action_node.hpp
+[9.062s] -- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/include/tb3_standalone_nav/planner
+[9.062s] -- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/include/tb3_standalone_nav/planner/a_star_planner_server.hpp
+[9.062s] -- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/include/tb3_standalone_nav/core
+[9.062s] -- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/include/tb3_standalone_nav/core/lifecycle_node_base.hpp
+[9.062s] -- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/include/tb3_standalone_nav/visibility_control.h
+[9.062s] -- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/include/tb3_standalone_nav/estimation
+[9.062s] -- Installing: /home/shcho/mydrivesim/install/tb3_standalone_nav/include/tb3_standalone_nav/estimation/amcl_node.hpp
+[9.062s] -- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/include/tb3_standalone_nav/estimation/ekf_node.hpp
+[9.062s] -- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/include/tb3_standalone_nav/controller
+[9.062s] -- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/include/tb3_standalone_nav/controller/dwa_controller_server.hpp
+[9.062s] -- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/include/tb3_standalone_nav/costmap
+[9.062s] -- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/include/tb3_standalone_nav/costmap/edt.hpp
+[9.062s] -- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/include/tb3_standalone_nav/costmap/costmap_2d.hpp
+[9.063s] -- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/include/tb3_standalone_nav/costmap/dynamic_obstacle_layer.hpp
+[9.063s] -- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/share/tb3_standalone_nav/behavior_trees
+[9.063s] -- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/share/tb3_standalone_nav/behavior_trees/navigate_to_pose.xml
+[9.063s] -- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/share/tb3_standalone_nav/launch
+[9.063s] -- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/share/tb3_standalone_nav/launch/tb3_nav_launch.py
+[9.063s] -- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/lib/libtb3_standalone_core.so
+[9.063s] -- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/lib/tb3_standalone_nav/a_star_planner_server
+[9.063s] -- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/lib/tb3_standalone_nav/dwa_controller_server
+[9.063s] -- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/lib/tb3_standalone_nav/ekf_node
+[9.063s] -- Installing: /home/shcho/mydrivesim/install/tb3_standalone_nav/lib/tb3_standalone_nav/amcl_node
+[9.068s] -- Set runtime path of "/home/shcho/mydrivesim/install/tb3_standalone_nav/lib/tb3_standalone_nav/amcl_node" to ""
+[9.069s] -- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/lib/tb3_standalone_nav/bt_navigator
+[9.069s] -- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/lib/tb3_standalone_nav/lifecycle_manager_node
+[9.069s] -- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/share/ament_index/resource_index/package_run_dependencies/tb3_standalone_nav
+[9.069s] -- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/share/ament_index/resource_index/parent_prefix_path/tb3_standalone_nav
+[9.069s] -- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/share/tb3_standalone_nav/environment/ament_prefix_path.sh
+[9.069s] -- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/share/tb3_standalone_nav/environment/ament_prefix_path.dsv
+[9.069s] -- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/share/tb3_standalone_nav/environment/path.sh
+[9.069s] -- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/share/tb3_standalone_nav/environment/path.dsv
+[9.070s] -- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/share/tb3_standalone_nav/local_setup.bash
+[9.070s] -- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/share/tb3_standalone_nav/local_setup.sh
+[9.070s] -- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/share/tb3_standalone_nav/local_setup.zsh
+[9.070s] -- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/share/tb3_standalone_nav/local_setup.dsv
+[9.070s] -- Installing: /home/shcho/mydrivesim/install/tb3_standalone_nav/share/tb3_standalone_nav/package.dsv
+[9.070s] -- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/share/ament_index/resource_index/packages/tb3_standalone_nav
+[9.070s] -- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/share/tb3_standalone_nav/cmake/tb3_standalone_navConfig.cmake
+[9.070s] -- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/share/tb3_standalone_nav/cmake/tb3_standalone_navConfig-version.cmake
+[9.070s] -- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/share/tb3_standalone_nav/package.xml
+[9.074s] Invoked command in '/home/shcho/mydrivesim/build/tb3_standalone_nav' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/shcho/mydrivesim/build/tb3_standalone_nav

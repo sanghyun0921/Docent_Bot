@@ -1,0 +1,181 @@
+/* 컨테이너: 지도가 보이는 창 */
+#map-container {
+    width: 100%;
+    height: 350px;
+    background-color: #1a1f2e; /* 지도 배경색 (어두운 색) */
+    position: relative;
+    overflow: hidden; /* 영역 밖 지도 숨김 */
+    border-radius: 12px;
+    border: 1px solid #334155;
+}
+
+/* 래퍼: 실제 지도가 그려지는 큰 판 */
+#map-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-origin: 0 0; /* 중요: 좌측 상단을 기준으로 확대/축소 */
+    will-change: transform, left, top;
+}
+
+/* 캔버스 */
+#mapCanvas {
+    display: block;
+}
+
+/* 객체 및 마커 스타일 */
+.map-object {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    transform: translate(-12px, -12px); /* 마커 자체 중앙 정렬 */
+    z-index: 10;
+}
+
+.artwork-marker { background: #7c3aed; }
+.home-marker { background: #059669; }
+.desk-marker { background: #2563eb; }
+.charge-marker { background: #d97706; }
+
+.current-target-marker {
+    background: #ef4444 !important;
+    animation: pulse-marker 1.5s infinite;
+    z-index: 20;
+}
+
+@keyframes pulse-marker {
+    0% { transform: translate(-12px, -12px) scale(0.9); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+    70% { transform: translate(-12px, -12px) scale(1.2); box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+    100% { transform: translate(-12px, -12px) scale(0.9); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+}
+
+#robot-marker {
+    position: absolute;
+    z-index: 99;
+    pointer-events: none;
+}
+
+.robot-arrow {
+    width: 0; height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-bottom: 26px solid #3b82f6;
+    position: relative;
+    left: -13px; top: -13px;
+}
+
+/* 작품 마커 기본 컨테이너 */
+.artwork-marker {
+    width: 50px !important;
+    height: 50px !important;
+    background: none !important; /* 배경색 제거 */
+    transform: translate(-25px, -25px) !important; /* 중앙 정렬 보정 */
+}
+
+/* 이미지 감싸는 래퍼 */
+.artwork-icon-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 6px solid white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    overflow: visible; /* 핀이 튀어나와야 하므로 */
+    background: #eee;
+}
+
+/* 실제 작품 썸네일 이미지 */
+.artwork-thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* 현재 목표 작품 강조 */
+.active-target {
+    border: 4px solid #ef4444 !important; /* 강렬한 빨간색 테두리 */
+    transform: scale(1.3); /* 다른 마커보다 크게 */
+    z-index: 100;
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.8);
+    transition: all 0.3s ease;
+}
+
+/* 현재 가야 할 곳 위에 뜨는 작은 핀 아이콘 */
+.target-pin {
+    position: absolute;
+    top: -25px; /* 마커 머리 위 */
+    left: 50%;
+    transform: translateX(-50%);
+    color: #ef4444;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+    animation: bounce 1s infinite;
+    z-index: 110;
+}
+
+/* 이미지가 없을 때 텍스트 박스 스타일 */
+.artwork-thumb-text-box {
+    width: 100%;
+    height: 100%;
+    background-color: #f8fafc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    padding: 5px;
+    text-align: center;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+}
+
+.thumb-name {
+    font-size: 8px;
+    font-weight: bold;
+    color: #1e293b;
+    line-height: 1.1;
+    margin-bottom: 2px;
+}
+
+.thumb-artist {
+    font-size: 7px;
+    color: #64748b;
+}
+
+/* 마커 기본 래퍼 (둥근 모양 유지) */
+.artwork-icon-wrapper {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: white;
+    overflow: visible; /* 핀이 보여야 하므로 visible */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.artwork-thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* 마커 래퍼 오버플로우 수정 (배지가 보이게) */
+.artwork-marker {
+    overflow: visible !important;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-8px); }
+}

@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>추천 코스</title>
+    <!-- 외부 라이브러리 -->
+    <!-- data.js를 먼저 부르고, 그 다음에 guide.js를 부릅니다 -->
+    <script src="{{ url_for('static', filename='js/data.js') }}"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- 전용 스타일 및 스크립트 연결 -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/course-recommendation.css') }}"
+    />
+    <script
+      src="{{ url_for('static', filename='js/course-recommendation.js') }}"
+      defer
+    ></script>
+  </head>
+  <body
+    class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex flex-col items-center justify-center p-8"
+  >
+    <div class="bg-white rounded-3xl shadow-2xl p-12 max-w-3xl w-full">
+      <div class="text-center mb-8">
+        <div class="flex justify-center mb-4">
+          <i data-lucide="sparkles" class="text-yellow-500 w-12 h-12"></i>
+        </div>
+        <h1 class="text-3xl font-bold text-gray-800 mb-2">추천 코스</h1>
+        <p class="text-lg text-gray-600">당신을 위한 맞춤 관람 코스입니다</p>
+      </div>
+
+      <!-- 코스 목록 영역 (JS에서 동적 생성) -->
+      <div class="space-y-4 mb-8" id="course-list"></div>
+
+      <!-- 버튼 영역 -->
+      <div class="space-y-4">
+        <!-- 1. 선택 완료 버튼 -->
+        <button
+          onclick="selectCourse()"
+          class="flex items-center justify-center w-full h-16 text-xl bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-bold"
+        >
+          <i data-lucide="check-circle-2" class="mr-3 w-7 h-7"></i> 선택 완료
+        </button>
+
+        <!-- 2. 음성 명령 버튼 추가 -->
+        <!-- navigateTo 함수에 { from: 'recommendation' } 추가 -->
+        <button
+          onclick="
+            location.href =
+              'listening.html?from=recommendation&selectedId=' +
+              (selectedCourseId || '')
+          "
+          class="flex items-center justify-center w-full h-16 text-xl border-2 border-gray-300 bg-white text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-bold"
+        >
+          <i data-lucide="mic" class="mr-3 w-7 h-7"></i> 음성으로 선택하기
+        </button>
+
+        <!-- 3. 뒤로가기 버튼 추가 -->
+        <button
+          onclick="goBack()"
+          class="flex items-center justify-center w-full h-14 text-lg border-2 border-gray-300 bg-white text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-bold"
+        >
+          <i data-lucide="arrow-left" class="mr-2 w-6 h-6"></i> 뒤로가기
+        </button>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,115 @@
+[0.000000] (-) TimerEvent: {}
+[0.005470] (tb3_standalone_nav) JobQueued: {'identifier': 'tb3_standalone_nav', 'dependencies': OrderedDict()}
+[0.005526] (tb3_standalone_nav) JobStarted: {'identifier': 'tb3_standalone_nav'}
+[0.011717] (tb3_standalone_nav) JobProgress: {'identifier': 'tb3_standalone_nav', 'progress': 'cmake'}
+[0.013900] (tb3_standalone_nav) JobProgress: {'identifier': 'tb3_standalone_nav', 'progress': 'build'}
+[0.014090] (tb3_standalone_nav) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/shcho/mydrivesim/build/tb3_standalone_nav', '--', '-j2', '-l2'], 'cwd': '/home/shcho/mydrivesim/build/tb3_standalone_nav', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'shcho'), ('LC_TIME', 'ko_KR.UTF-8'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '1'), ('LIBGL_ALWAYS_SOFTWARE', '1'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:'), ('HOME', '/home/shcho'), ('DESKTOP_SESSION', 'ubuntu'), ('NVM_BIN', '/home/shcho/.nvm/versions/node/v24.11.0/bin'), ('NVM_INC', '/home/shcho/.nvm/versions/node/v24.11.0/include/node'), ('GAZEBO_MASTER_URI', 'http://localhost:11345'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'ko_KR.UTF-8'), ('DBUS_STARTER_BUS_TYPE', 'session'), ('SYSTEMD_EXEC_PID', '1381'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus,guid=f238ff0f7fe23fadc232211469c0e41f'), ('COLORTERM', 'truecolor'), ('NVM_DIR', '/home/shcho/.nvm'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'shcho'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'shcho'), ('TERM', 'xterm-256color'), ('GAZEBO_MODEL_PATH', '/usr/share/gazebo-11/models:'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('OGRE_RESOURCE_PATH', '/usr/lib/x86_64-linux-gnu/OGRE-1.9.0'), ('PATH', '/opt/ros/humble/bin:/home/shcho/.nvm/versions/node/v24.11.0/bin:/home/shcho/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/shcho-VirtualBox:@/tmp/.ICE-unix/1381,unix/shcho-VirtualBox:/tmp/.ICE-unix/1381'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'ko_KR.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/79cdfb66_2f3f_41aa_993e_dd8ecd5a604f'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'ko_KR.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.Z7U1M3'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.105'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('ROS_DOMAIN_ID', '32'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'ko_KR.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'ko_KR.UTF-8'), ('GAZEBO_RESOURCE_PATH', '/usr/share/gazebo-11:'), ('LC_IDENTIFICATION', 'ko_KR.UTF-8'), ('GAZEBO_MODEL_DATABASE_URI', 'http://models.gazebosim.org'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/shcho/mydrivesim/build/tb3_standalone_nav'), ('TURTLEBOT3_MODEL', 'waffle_pi'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('GAZEBO_PLUGIN_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:'), ('NVM_CD_FLAGS', ''), ('DBUS_STARTER_ADDRESS', 'unix:path=/run/user/1000/bus,guid=f238ff0f7fe23fadc232211469c0e41f'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'ko_KR.UTF-8'), ('LC_PAPER', 'ko_KR.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[0.089536] (tb3_standalone_nav) StdoutLine: {'line': b'[ 11%] Built target lifecycle_manager_node\n'}
+[0.089856] (tb3_standalone_nav) StdoutLine: {'line': b'[ 41%] Built target tb3_standalone_core\n'}
+[0.104063] (-) TimerEvent: {}
+[0.123068] (tb3_standalone_nav) StdoutLine: {'line': b'[ 47%] \x1b[32mBuilding CXX object CMakeFiles/dwa_controller_server.dir/src/controller/dwa_controller_server.cpp.o\x1b[0m\n'}
+[0.134552] (tb3_standalone_nav) StdoutLine: {'line': b'[ 58%] Built target a_star_planner_server\n'}
+[0.172733] (tb3_standalone_nav) StdoutLine: {'line': b'[ 70%] Built target ekf_node\n'}
+[0.204623] (-) TimerEvent: {}
+[0.206811] (tb3_standalone_nav) StdoutLine: {'line': b'[ 82%] Built target amcl_node\n'}
+[0.269563] (tb3_standalone_nav) StdoutLine: {'line': b'[ 94%] Built target bt_navigator\n'}
+[0.304871] (-) TimerEvent: {}
+[0.406136] (-) TimerEvent: {}
+[0.506977] (-) TimerEvent: {}
+[0.607390] (-) TimerEvent: {}
+[0.707652] (-) TimerEvent: {}
+[0.821315] (-) TimerEvent: {}
+[0.929057] (-) TimerEvent: {}
+[1.039252] (-) TimerEvent: {}
+[1.194631] (-) TimerEvent: {}
+[1.325742] (-) TimerEvent: {}
+[1.441129] (-) TimerEvent: {}
+[1.595663] (-) TimerEvent: {}
+[2.017686] (-) TimerEvent: {}
+[2.383075] (-) TimerEvent: {}
+[2.508683] (-) TimerEvent: {}
+[2.617774] (-) TimerEvent: {}
+[3.015648] (-) TimerEvent: {}
+[3.123523] (-) TimerEvent: {}
+[3.339040] (-) TimerEvent: {}
+[3.441468] (-) TimerEvent: {}
+[3.589941] (-) TimerEvent: {}
+[3.690487] (-) TimerEvent: {}
+[3.880987] (-) TimerEvent: {}
+[3.984159] (-) TimerEvent: {}
+[4.101684] (-) TimerEvent: {}
+[4.318849] (-) TimerEvent: {}
+[4.441843] (-) TimerEvent: {}
+[4.588528] (-) TimerEvent: {}
+[4.727746] (-) TimerEvent: {}
+[4.850130] (-) TimerEvent: {}
+[5.051995] (-) TimerEvent: {}
+[5.246414] (-) TimerEvent: {}
+[5.433696] (-) TimerEvent: {}
+[5.595446] (-) TimerEvent: {}
+[5.703796] (-) TimerEvent: {}
+[5.823685] (-) TimerEvent: {}
+[6.596810] (-) TimerEvent: {}
+[7.600317] (-) TimerEvent: {}
+[7.871923] (-) TimerEvent: {}
+[8.146246] (-) TimerEvent: {}
+[8.266760] (-) TimerEvent: {}
+[8.290116] (tb3_standalone_nav) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable dwa_controller_server\x1b[0m\n'}
+[8.367145] (-) TimerEvent: {}
+[8.467713] (-) TimerEvent: {}
+[8.568185] (-) TimerEvent: {}
+[8.674239] (-) TimerEvent: {}
+[8.790395] (-) TimerEvent: {}
+[8.806839] (tb3_standalone_nav) StdoutLine: {'line': b'[100%] Built target dwa_controller_server\n'}
+[8.816312] (tb3_standalone_nav) CommandEnded: {'returncode': 0}
+[8.816700] (tb3_standalone_nav) JobProgress: {'identifier': 'tb3_standalone_nav', 'progress': 'install'}
+[8.827478] (tb3_standalone_nav) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/shcho/mydrivesim/build/tb3_standalone_nav'], 'cwd': '/home/shcho/mydrivesim/build/tb3_standalone_nav', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'shcho'), ('LC_TIME', 'ko_KR.UTF-8'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '1'), ('LIBGL_ALWAYS_SOFTWARE', '1'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:'), ('HOME', '/home/shcho'), ('DESKTOP_SESSION', 'ubuntu'), ('NVM_BIN', '/home/shcho/.nvm/versions/node/v24.11.0/bin'), ('NVM_INC', '/home/shcho/.nvm/versions/node/v24.11.0/include/node'), ('GAZEBO_MASTER_URI', 'http://localhost:11345'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'ko_KR.UTF-8'), ('DBUS_STARTER_BUS_TYPE', 'session'), ('SYSTEMD_EXEC_PID', '1381'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus,guid=f238ff0f7fe23fadc232211469c0e41f'), ('COLORTERM', 'truecolor'), ('NVM_DIR', '/home/shcho/.nvm'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'shcho'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'shcho'), ('TERM', 'xterm-256color'), ('GAZEBO_MODEL_PATH', '/usr/share/gazebo-11/models:'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('OGRE_RESOURCE_PATH', '/usr/lib/x86_64-linux-gnu/OGRE-1.9.0'), ('PATH', '/opt/ros/humble/bin:/home/shcho/.nvm/versions/node/v24.11.0/bin:/home/shcho/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/shcho-VirtualBox:@/tmp/.ICE-unix/1381,unix/shcho-VirtualBox:/tmp/.ICE-unix/1381'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'ko_KR.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/79cdfb66_2f3f_41aa_993e_dd8ecd5a604f'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'ko_KR.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.Z7U1M3'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.105'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('ROS_DOMAIN_ID', '32'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'ko_KR.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'ko_KR.UTF-8'), ('GAZEBO_RESOURCE_PATH', '/usr/share/gazebo-11:'), ('LC_IDENTIFICATION', 'ko_KR.UTF-8'), ('GAZEBO_MODEL_DATABASE_URI', 'http://models.gazebosim.org'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/shcho/mydrivesim/build/tb3_standalone_nav'), ('TURTLEBOT3_MODEL', 'waffle_pi'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('GAZEBO_PLUGIN_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:'), ('NVM_CD_FLAGS', ''), ('DBUS_STARTER_ADDRESS', 'unix:path=/run/user/1000/bus,guid=f238ff0f7fe23fadc232211469c0e41f'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'ko_KR.UTF-8'), ('LC_PAPER', 'ko_KR.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[8.838056] (tb3_standalone_nav) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[8.838597] (tb3_standalone_nav) StdoutLine: {'line': b'-- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/include\n'}
+[8.838729] (tb3_standalone_nav) StdoutLine: {'line': b'-- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/include/tb3_standalone_nav\n'}
+[8.838760] (tb3_standalone_nav) StdoutLine: {'line': b'-- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/include/tb3_standalone_nav/bt\n'}
+[8.838785] (tb3_standalone_nav) StdoutLine: {'line': b'-- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/include/tb3_standalone_nav/bt/bt_action_node.hpp\n'}
+[8.838826] (tb3_standalone_nav) StdoutLine: {'line': b'-- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/include/tb3_standalone_nav/planner\n'}
+[8.838919] (tb3_standalone_nav) StdoutLine: {'line': b'-- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/include/tb3_standalone_nav/planner/a_star_planner_server.hpp\n'}
+[8.839137] (tb3_standalone_nav) StdoutLine: {'line': b'-- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/include/tb3_standalone_nav/core\n'}
+[8.839165] (tb3_standalone_nav) StdoutLine: {'line': b'-- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/include/tb3_standalone_nav/core/lifecycle_node_base.hpp\n'}
+[8.839189] (tb3_standalone_nav) StdoutLine: {'line': b'-- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/include/tb3_standalone_nav/visibility_control.h\n'}
+[8.839385] (tb3_standalone_nav) StdoutLine: {'line': b'-- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/include/tb3_standalone_nav/estimation\n'}
+[8.839493] (tb3_standalone_nav) StdoutLine: {'line': b'-- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/include/tb3_standalone_nav/estimation/amcl_node.hpp\n'}
+[8.839520] (tb3_standalone_nav) StdoutLine: {'line': b'-- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/include/tb3_standalone_nav/estimation/ekf_node.hpp\n'}
+[8.839544] (tb3_standalone_nav) StdoutLine: {'line': b'-- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/include/tb3_standalone_nav/controller\n'}
+[8.839567] (tb3_standalone_nav) StdoutLine: {'line': b'-- Installing: /home/shcho/mydrivesim/install/tb3_standalone_nav/include/tb3_standalone_nav/controller/dwa_controller_server.hpp\n'}
+[8.839591] (tb3_standalone_nav) StdoutLine: {'line': b'-- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/include/tb3_standalone_nav/costmap\n'}
+[8.839614] (tb3_standalone_nav) StdoutLine: {'line': b'-- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/include/tb3_standalone_nav/costmap/edt.hpp\n'}
+[8.839637] (tb3_standalone_nav) StdoutLine: {'line': b'-- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/include/tb3_standalone_nav/costmap/costmap_2d.hpp\n'}
+[8.839665] (tb3_standalone_nav) StdoutLine: {'line': b'-- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/include/tb3_standalone_nav/costmap/dynamic_obstacle_layer.hpp\n'}
+[8.839687] (tb3_standalone_nav) StdoutLine: {'line': b'-- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/share/tb3_standalone_nav/behavior_trees\n'}
+[8.839708] (tb3_standalone_nav) StdoutLine: {'line': b'-- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/share/tb3_standalone_nav/behavior_trees/navigate_to_pose.xml\n'}
+[8.839729] (tb3_standalone_nav) StdoutLine: {'line': b'-- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/share/tb3_standalone_nav/launch\n'}
+[8.839750] (tb3_standalone_nav) StdoutLine: {'line': b'-- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/share/tb3_standalone_nav/launch/tb3_nav_launch.py\n'}
+[8.840975] (tb3_standalone_nav) StdoutLine: {'line': b'-- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/lib/libtb3_standalone_core.so\n'}
+[8.842023] (tb3_standalone_nav) StdoutLine: {'line': b'-- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/lib/tb3_standalone_nav/a_star_planner_server\n'}
+[8.843349] (tb3_standalone_nav) StdoutLine: {'line': b'-- Installing: /home/shcho/mydrivesim/install/tb3_standalone_nav/lib/tb3_standalone_nav/dwa_controller_server\n'}
+[8.845547] (tb3_standalone_nav) StdoutLine: {'line': b'-- Set runtime path of "/home/shcho/mydrivesim/install/tb3_standalone_nav/lib/tb3_standalone_nav/dwa_controller_server" to ""\n'}
+[8.846760] (tb3_standalone_nav) StdoutLine: {'line': b'-- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/lib/tb3_standalone_nav/ekf_node\n'}
+[8.847824] (tb3_standalone_nav) StdoutLine: {'line': b'-- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/lib/tb3_standalone_nav/amcl_node\n'}
+[8.848888] (tb3_standalone_nav) StdoutLine: {'line': b'-- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/lib/tb3_standalone_nav/bt_navigator\n'}
+[8.849818] (tb3_standalone_nav) StdoutLine: {'line': b'-- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/lib/tb3_standalone_nav/lifecycle_manager_node\n'}
+[8.850881] (tb3_standalone_nav) StdoutLine: {'line': b'-- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/share/ament_index/resource_index/package_run_dependencies/tb3_standalone_nav\n'}
+[8.851339] (tb3_standalone_nav) StdoutLine: {'line': b'-- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/share/ament_index/resource_index/parent_prefix_path/tb3_standalone_nav\n'}
+[8.851455] (tb3_standalone_nav) StdoutLine: {'line': b'-- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/share/tb3_standalone_nav/environment/ament_prefix_path.sh\n'}
+[8.851525] (tb3_standalone_nav) StdoutLine: {'line': b'-- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/share/tb3_standalone_nav/environment/ament_prefix_path.dsv\n'}
+[8.851610] (tb3_standalone_nav) StdoutLine: {'line': b'-- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/share/tb3_standalone_nav/environment/path.sh\n'}
+[8.851661] (tb3_standalone_nav) StdoutLine: {'line': b'-- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/share/tb3_standalone_nav/environment/path.dsv\n'}
+[8.851686] (tb3_standalone_nav) StdoutLine: {'line': b'-- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/share/tb3_standalone_nav/local_setup.bash\n'}
+[8.851709] (tb3_standalone_nav) StdoutLine: {'line': b'-- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/share/tb3_standalone_nav/local_setup.sh\n'}
+[8.851732] (tb3_standalone_nav) StdoutLine: {'line': b'-- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/share/tb3_standalone_nav/local_setup.zsh\n'}
+[8.851754] (tb3_standalone_nav) StdoutLine: {'line': b'-- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/share/tb3_standalone_nav/local_setup.dsv\n'}
+[8.851776] (tb3_standalone_nav) StdoutLine: {'line': b'-- Installing: /home/shcho/mydrivesim/install/tb3_standalone_nav/share/tb3_standalone_nav/package.dsv\n'}
+[8.852418] (tb3_standalone_nav) StdoutLine: {'line': b'-- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/share/ament_index/resource_index/packages/tb3_standalone_nav\n'}
+[8.852515] (tb3_standalone_nav) StdoutLine: {'line': b'-- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/share/tb3_standalone_nav/cmake/tb3_standalone_navConfig.cmake\n'}
+[8.852559] (tb3_standalone_nav) StdoutLine: {'line': b'-- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/share/tb3_standalone_nav/cmake/tb3_standalone_navConfig-version.cmake\n'}
+[8.852586] (tb3_standalone_nav) StdoutLine: {'line': b'-- Up-to-date: /home/shcho/mydrivesim/install/tb3_standalone_nav/share/tb3_standalone_nav/package.xml\n'}
+[8.854834] (tb3_standalone_nav) CommandEnded: {'returncode': 0}
+[8.874547] (tb3_standalone_nav) JobEnded: {'identifier': 'tb3_standalone_nav', 'rc': 0}
+[8.875289] (-) EventReactorShutdown: {}

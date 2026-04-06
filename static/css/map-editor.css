@@ -1,0 +1,158 @@
+/* --- [1. 관리자 페이지 공통 레이아웃 (style.css 대체)] --- */
+:root {
+    --bg-dark: #0f172a;
+    --panel-dark: #1a1f2e;
+    --border-color: #374151;
+    --text-gray: #9ca3af;
+    --blue-primary: #3b82f6;
+    --green-success: #10b981;
+    --red-danger: #ef4444;
+}
+
+body {
+    margin: 0; padding: 0;
+    background-color: var(--bg-dark);
+    color: white;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.app-container { display: flex; min-height: 100vh; }
+
+/* 사이드바 */
+.sidebar {
+    width: 260px; background-color: var(--panel-dark);
+    border-right: 1px solid var(--border-color);
+    display: flex; flex-direction: column; padding: 24px; flex-shrink: 0;
+}
+.sidebar-header { margin-bottom: 32px; }
+.sidebar-title { font-size: 20px; font-weight: bold; color: white; }
+.sidebar-subtitle { font-size: 12px; color: var(--text-gray); }
+.sidebar-nav { display: flex; flex-direction: column; gap: 4px; flex: 1; }
+.sidebar-nav a {
+    display: flex; align-items: center; padding: 12px;
+    color: var(--text-gray); text-decoration: none; border-radius: 8px;
+    font-size: 14px; transition: 0.2s;
+}
+.sidebar-nav a:hover, .sidebar-nav a.active { background-color: rgba(59, 130, 246, 0.1); color: var(--blue-primary); }
+.sidebar-nav .icon { width: 20px; height: 20px; margin-right: 12px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+/* 메인 영역 */
+.main-content { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+.header {
+    height: 64px; border-bottom: 1px solid var(--border-color);
+    display: flex; align-items: center; justify-content: space-between; padding: 0 32px;
+}
+
+/* --- [2. 맵 에디터 전용 스타일] --- */
+.toolbar { 
+    background-color: var(--panel-dark); 
+    border-bottom: 1px solid var(--border-color); 
+    padding: 16px 32px; 
+    display: flex; gap: 12px; align-items: center; 
+}
+.toolbar-buttons { display: flex; gap: 8px; flex-wrap: wrap; }
+.tool-button { 
+    padding: 10px 16px; border-radius: 8px; border: 2px solid #475569; 
+    background: #2a3142; color: white; cursor: pointer; transition: 0.2s; font-size: 13px;
+}
+.tool-button.active { border-color: white; background: var(--blue-primary); }
+.save-btn { background: var(--green-success) !important; margin-left: auto; border: none; font-weight: bold; }
+
+.btn-nav-init { border-color: #f59e0b; color: #f59e0b; }
+.btn-nav-init.active { background: #f59e0b; color: white; border-color: white; }
+.btn-nav-goal { border-color: #8b5cf6; color: #8b5cf6; }
+.btn-nav-goal.active { background: #8b5cf6; color: white; border-color: white; }
+
+/* 캔버스 중앙 정렬 레이아웃 */
+.canvas-area { 
+    flex: 1; padding: 40px; overflow: auto; background: #0f172a; text-align: center; 
+}
+.canvas-container { 
+    background: var(--panel-dark); border: 1px solid #334151; position: relative; 
+    cursor: crosshair; transform-origin: top left; display: inline-block; text-align: left; 
+    margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+#editorCanvas { position: absolute; top: 0; left: 0; pointer-events: none; }
+
+/* 맵 객체 아이콘 */
+.map-object {
+    position: absolute; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    border-radius: 8px; z-index: 10; user-select: none; cursor: grab; padding: 10px; min-width: 80px;
+}
+.map-object:active { cursor: grabbing; }
+
+/* 로봇 마커 */
+#robot-marker {
+    position: absolute; width: 0; height: 0; z-index: 100; pointer-events: none; display: none;
+    transition: left 0.1s linear, top 0.1s linear, transform 0.1s linear;
+}
+.robot-arrow {
+    width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent;
+    border-bottom: 25px solid var(--red-danger); position: relative; left: -10px; top: -12px; 
+    filter: drop-shadow(0 0 5px rgba(255,0,0,0.8));
+}
+
+.wall-object {
+    position: absolute; background: #94a3b8; height: 4px; margin-top: -2px; 
+    transform-origin: 0 50%; z-index: 5; pointer-events: auto; cursor: pointer;
+}
+.wall-object:hover { background: var(--red-danger) !important; height: 6px; margin-top: -3px; }
+
+.icon { width: 24px; height: 24px; stroke: currentColor; stroke-width: 2; fill: none; margin-bottom: 5px; pointer-events: none; }
+
+.artwork-object { background: #7c3aed; color: white; }
+.desk-object { background: #2563eb; color: white; }
+.home-object { background: #059669; color: white; }
+.charge-object { background: #d97706; color: white; }
+
+.object-label { pointer-events: none; font-weight: bold; font-size: 12px; text-align: center; text-shadow: 1px 1px 2px black;}
+.object-sub { font-size: 10px; opacity: 0.9; pointer-events: none; text-shadow: 1px 1px 2px black;}
+
+/* 모달 및 정보 패널 */
+.modal-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: center; z-index: 2000;
+}
+.modal-content {
+    background: var(--panel-dark); padding: 24px; border-radius: 12px; border: 1px solid var(--border-color); width: 450px;
+}
+.modal-content input, .modal-content textarea {
+    width: 100%; padding: 10px; margin-bottom: 15px; background: #2a3142; 
+    border: 1px solid #475569; color: white; border-radius: 6px; font-family: inherit; box-sizing: border-box;
+}
+.modal-content label { display: block; margin-bottom: 5px; color: var(--text-gray); font-size: 14px; font-weight: bold;}
+
+#infoPanel {
+    position: fixed; bottom: 40px; right: 40px; background-color: var(--panel-dark);
+    border: 2px solid var(--blue-primary); border-radius: 12px; padding: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); z-index: 1000;
+    display: none; color: white; min-width: 280px; animation: slideUp 0.3s ease-out;
+}
+@keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.info-title { font-size: 18px; font-weight: bold; margin-bottom: 15px; color: var(--blue-primary); display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; }
+.info-row { margin-bottom: 10px; font-size: 14px; color: #d1d5db; }
+.info-val { color: var(--green-success); font-weight: bold; float: right; font-size: 15px; }
+.close-btn { background: none; border: none; color: var(--text-gray); cursor: pointer; font-size: 18px; }
+.close-btn:hover { color: var(--red-danger); }
+
+.button-primary { background-color: var(--blue-primary); color: white; border: none; border-radius: 6px; cursor: pointer; }
+.button-secondary { background-color: #475569; color: white; border: none; border-radius: 6px; cursor: pointer; }
+
+.tool-button.set_yaw {
+    border-color: #f59e0b;
+    color: #f59e0b;
+}
+.tool-button.set_yaw.active {
+    background: #f59e0b;
+    color: white;
+    border-color: white;
+}
+/* 방향 설정 모드일 때 커서 변경 */
+.canvas-container.yaw-mode {
+    cursor: crosshair !important;
+}
+/* 정보 패널 yaw 행 스타일 */
+#infoYawRow {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #d1d5db;
+}

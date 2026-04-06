@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SLAM Mapping - Museum Guide Bot</title>
+
+    <!-- CSS 연결 -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/slam.css') }}">
+
+    <!-- ROSLIB 라이브러리 -->
+    <script src="https://cdn.jsdelivr.net/npm/roslib@1/build/roslib.min.js"></script>
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- 사이드바 -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-title">Museum Guide</div>
+                <div class="sidebar-subtitle">Control Panel</div>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="/admin">
+                    <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" /><rect x="14" y="3" width="7" height="7" /><rect x="14" y="14" width="7" height="7" /><rect x="3" y="14" width="7" height="7" /></svg>
+                    Dashboard
+                </a>
+                <a href="/slam" class="active">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /><circle cx="12" cy="12" r="3" /></svg>
+                    SLAM Mapping
+                </a>
+                <a href="/map-editor">
+                    <svg class="icon" viewBox="0 0 24 24"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6" /><line x1="8" y1="2" x2="8" y2="18" /><line x1="16" y1="6" x2="16" y2="22" /></svg>
+                    Map Editor
+                </a>
+                <a href="/analytics">
+                    <svg class="icon" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10" /><line x1="12" y1="20" x2="12" y2="4" /><line x1="6" y1="20" x2="6" y2="14" /></svg>
+                    Analytics
+                </a>
+                <hr style="border:0; border-top:1px solid var(--border-color); margin: 20px 0; opacity: 0.3;">
+                <a href="/">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                    Go to Service
+                </a>
+            </nav>
+            <div class="sidebar-footer">© 2026 Museum Guide Bot</div>
+        </aside>
+
+        <div class="main-content">
+            <header class="header">
+                <div class="header-title">
+                    SLAM Real-time Mapping
+                    <span id="ros-status" style="font-size: 12px; color: gray; margin-left: 10px;">(ROS:
+                        Disconnected)</span>
+                </div>
+                <div id="current-time"></div>
+            </header>
+
+            <!-- SLAM 전용 툴바 -->
+            <div class="toolbar"
+                style="background-color: #1a1f2e; border-bottom: 1px solid #374151; padding: 10px 32px; display: flex; gap: 15px; align-items: center;">
+                <button class="tool-button start" onclick="startSlam()">SLAM 시작</button>
+                <button class="tool-button stop" onclick="stopSlam()">SLAM 중지</button>
+                <button class="tool-button" onclick="resetRobotHeading()"
+                    style="background:#f59e0b; color:white; border:none; font-weight:bold;">
+                    📍 방향 영점 맞추기
+                </button>
+                <div style="flex: 1; display: flex; align-items: center; justify-content: center; gap: 10px;">
+                    <span style="font-size: 12px; color: #94a3b8;">맵 프리셋:</span>
+                    <select id="map-presets" class="form-input" style="width: 180px; padding: 5px;">
+                        <option value="">저장된 맵 선택</option>
+                    </select>
+                    <button class="tool-button" onclick="loadSelectedPreset()"
+                        style="background:#475569; padding: 8px 12px;">불러오기</button>
+                    <!-- 삭제 버튼 추가 -->
+                    <button class="tool-button" onclick="deleteSelectedPreset()"
+                        style="background:#ef4444; color:white; padding: 8px 12px; border:none;">삭제</button>
+                </div>
+                <input type="text" id="map-filename" placeholder="저장할 맵 이름 (예: gallery_01)" class="form-input"
+                    style="width: 220px;">
+                <button class="tool-button save" onclick="saveSlamMap()">맵 저장 & 그린 맵 적용</button>
+            </div>
+
+            <main class="content">
+                <div class="slam-content-grid">
+                    <!-- 왼쪽 사이드바: 상태 및 로그 -->
+                    <div class="slam-side-panel">
+                        <div class="slam-card">
+                            <strong>🤖 로봇 실시간 상태</strong>
+                            <div class="status-row">X: <span id="rob-x" class="status-value">0.00</span></div>
+                            <div class="status-row">Y: <span id="rob-y" class="status-value">0.00</span></div>
+                            <div class="status-row">Angle: <span id="rob-th" class="status-value">0.0</span>°</div>
+                            <div class="status-row">Linear: <span id="rob-v" class="status-value">0.00</span> m/s</div>
+                            <div class="status-row">Angular: <span id="rob-w" class="status-value">0.00</span> rad/s
+                            </div>
+                        </div>
+
+                        <div class="slam-card">
+                            <strong>🗺️ 맵 정보</strong>
+                            <div class="status-row">Width: <span id="map-w" class="status-value">0</span> px</div>
+                            <div class="status-row">Height: <span id="map-h" class="status-value">0</span> px</div>
+                            <div class="status-row">Resolution: <span id="map-res" class="status-value">0.05</span>
+                            </div>
+                            <div class="status-row">Update Rate: <span id="map-hz" class="status-value">0</span> Hz
+                            </div>
+                        </div>
+
+                        <div class="slam-card">
+                            <strong>⚙️ 주행 속도 설정</strong>
+                            <div class="slider-container" style="margin-top: 10px;">
+                                <input type="range" id="slam-speed" min="0.05" max="0.26" step="0.01" value="0.10"
+                                    class="slider-input" oninput="updateSlamSpeed()">
+                                <div class="value-display" id="speed-display">0.10 m/s</div>
+                            </div>
+                        </div>
+
+                        <div class="log-container" id="slam-logs">
+                            <span class="log-time">[시스템]</span> SLAM 모듈이 준비되었습니다.
+                        </div>
+                    </div>
+
+                    <!-- 오른쪽: 메인 SLAM 캔버스 -->
+                    <div id="slam-canvas-container">
+                        <canvas id="slamCanvas"></canvas>
+
+                        <!-- 캔버스 위 오버레이 (조작 피드백) -->
+                        <div class="slam-overlay">
+                            <div class="slam-card">
+                                <strong>Manual Control</strong>
+                                <div id="key-display">
+                                    <div id="key-w" class="key-badge">W</div>
+                                    <div id="key-a" class="key-badge">A</div>
+                                    <div id="key-s" class="key-badge">S</div>
+                                    <div id="key-d" class="key-badge">D</div>
+                                    <div id="key-x" class="key-badge">X</div>
+                                </div>
+                            </div>
+                            <div class="slam-card" style="font-size: 11px; opacity: 0.8;">
+                                🖱️ 휠: 확대/축소<br>
+                                🖱️ 좌클릭 드래그: 회전<br>
+                                🖱️ 휠클릭 드래그: 뷰 이동
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- JS 연결 -->
+    <script src="{{ url_for('static', filename='js/slam.js') }}"></script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+[01m[K/home/shcho/mydrivesim/src/tb3_standalone_nav/src/estimation/amcl_node.cpp:[m[K In member function ‘[01m[Kvoid tb3_standalone_nav::estimation::AMCLNode::scan_callback(sensor_msgs::msg::LaserScan_<std::allocator<void> >::SharedPtr)[m[K’:
+[01m[K/home/shcho/mydrivesim/src/tb3_standalone_nav/src/estimation/amcl_node.cpp:129:8:[m[K [01;31m[Kerror: [m[K‘[01m[Klaser_offset_initialized_[m[K’ was not declared in this scope
+  129 |   if (![01;31m[Klaser_offset_initialized_[m[K) {
+      |        [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/shcho/mydrivesim/src/tb3_standalone_nav/src/estimation/amcl_node.cpp:133:7:[m[K [01;31m[Kerror: [m[K‘[01m[Klaser_x_offset_[m[K’ was not declared in this scope
+  133 |       [01;31m[Klaser_x_offset_[m[K = base_to_scan.transform.translation.x;
+      |       [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/shcho/mydrivesim/src/tb3_standalone_nav/src/estimation/amcl_node.cpp:134:7:[m[K [01;31m[Kerror: [m[K‘[01m[Klaser_y_offset_[m[K’ was not declared in this scope
+  134 |       [01;31m[Klaser_y_offset_[m[K = base_to_scan.transform.translation.y;
+      |       [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/shcho/mydrivesim/src/tb3_standalone_nav/src/estimation/amcl_node.cpp:135:7:[m[K [01;31m[Kerror: [m[K‘[01m[Klaser_theta_offset_[m[K’ was not declared in this scope
+  135 |       [01;31m[Klaser_theta_offset_[m[K = tf2::getYaw(base_to_scan.transform.rotation);
+      |       [01;31m[K^~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/shcho/mydrivesim/src/tb3_standalone_nav/src/estimation/amcl_node.cpp:[m[K In member function ‘[01m[Kdouble tb3_standalone_nav::estimation::AMCLNode::compute_laser_weight(const tb3_standalone_nav::estimation::Particle&, const SharedPtr&)[m[K’:
+[01m[K/home/shcho/mydrivesim/src/tb3_standalone_nav/src/estimation/amcl_node.cpp:257:26:[m[K [01;31m[Kerror: [m[K‘[01m[Klaser_x_offset_[m[K’ was not declared in this scope
+  257 |   double laser_x = p.x + [01;31m[Klaser_x_offset_[m[K * std::cos(p.theta) - laser_y_offset_ * std::sin(p.theta);
+      |                          [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/shcho/mydrivesim/src/tb3_standalone_nav/src/estimation/amcl_node.cpp:257:64:[m[K [01;31m[Kerror: [m[K‘[01m[Klaser_y_offset_[m[K’ was not declared in this scope
+  257 | ouble laser_x = p.x + laser_x_offset_ * std::cos(p.theta) - [01;31m[Klaser_y_offset_[m[K * std::sin(p.theta);
+      |                                                             [01;31m[K^~~~~~~~~~~~~~~[m[K
+
+[01m[K/home/shcho/mydrivesim/src/tb3_standalone_nav/src/estimation/amcl_node.cpp:259:34:[m[K [01;31m[Kerror: [m[K‘[01m[Klaser_theta_offset_[m[K’ was not declared in this scope
+  259 |   double laser_theta = p.theta + [01;31m[Klaser_theta_offset_[m[K;
+      |                                  [01;31m[K^~~~~~~~~~~~~~~~~~~[m[K
+gmake[2]: *** [CMakeFiles/amcl_node.dir/build.make:76: CMakeFiles/amcl_node.dir/src/estimation/amcl_node.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:253: CMakeFiles/amcl_node.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

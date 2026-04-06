@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>작품 안내</title>
+  <script src="{{ url_for('static', filename='js/data.js') }}"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/roslib@1/build/roslib.min.js"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/guide.css') }}" />
+  <script src="{{ url_for('static', filename='js/guide.js') }}" defer></script>
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex flex-col items-center justify-center p-8">
+  <div class="bg-white rounded-3xl shadow-2xl p-12 max-w-4xl w-full relative">
+
+    <!-- 상단 상태바 -->
+    <div class="mb-8 flex items-center justify-between">
+      <h1 class="text-3xl font-bold text-gray-800">도슨트 안내</h1>
+      <div id="arrival-status"
+        class="px-6 py-2 rounded-full text-lg font-bold bg-yellow-100 text-yellow-700 animate-pulse">
+        작품으로 이동 중...
+      </div>
+    </div>
+
+    <!-- 정보 표시 영역 (이미지 제외) -->
+    <div class="mb-8 p-10 bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl text-center">
+      <p id="artwork-description" class="text-2xl text-blue-600 font-bold mb-6 leading-relaxed">
+        로봇이 작품 0.5m 이내에 도착하면 설명을 시작합니다. 잠시만 기다려 주세요.
+      </p>
+
+      <div id="artwork-info-box" class="opacity-0 transition-opacity duration-500">
+        <h2 id="artwork-title" class="text-4xl font-black text-gray-900 mb-2"></h2>
+        <p id="artwork-artist" class="text-2xl text-gray-600"></p>
+      </div>
+    </div>
+
+    <!-- 실시간 갤러리 맵 -->
+    <!-- guide.html 내 지도 부분 교체 -->
+    <div class="mb-8 p-6 bg-white border border-gray-200 rounded-2xl shadow-sm">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-xl font-bold text-gray-800 flex items-center">
+          <i data-lucide="map" class="mr-2 w-5 h-5 text-blue-600"></i> 실시간 갤러리 맵
+        </h3>
+      </div>
+      <!-- 맵 컨테이너 -->
+      <div id="map-container">
+        <!-- 래퍼: JS에서 이 요소의 scale과 left, top을 조절합니다 -->
+        <div id="map-wrapper">
+          <canvas id="mapCanvas"></canvas>
+          <div id="objectsContainer"></div>
+          <div id="robot-marker">
+            <div class="robot-arrow"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 컨트롤 버튼 -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+      <button id="next-btn" onclick="nextArtwork()"
+        class="flex items-center justify-center h-16 text-xl bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-bold transition-transform active:scale-95">
+        <i data-lucide="arrow-right" class="mr-3 w-7 h-7"></i> 다음 작품 이동
+      </button>
+      <button onclick="startVoiceCommand()"
+        class="flex items-center justify-center h-16 text-xl border-2 border-gray-300 bg-white text-green-700 rounded-lg hover:bg-gray-50 font-bold shadow-sm">
+        <i data-lucide="mic" class="mr-3 w-7 h-7"></i> 터틀봇과 대화 및 음성 명령
+      </button>
+      <button onclick="goToArtworkList()"
+        class="flex items-center justify-center h-16 text-xl border-2 border-gray-300 bg-white text-gray-700 rounded-lg hover:bg-gray-50 font-bold">특정
+        작품 선택</button>
+      <button onclick="goBack()"
+        class="flex items-center justify-center h-16 text-xl border-2 border-gray-300 bg-white text-gray-700 rounded-lg hover:bg-gray-50 font-bold">
+        <i data-lucide="arrow-left" class="mr-2 w-6 h-6"></i> 뒤로가기
+      </button>
+      <button onclick="exitGuide()"
+        class="flex items-center justify-center h-16 text-xl border-2 border-gray-300 bg-white text-red-700 rounded-lg hover:bg-gray-50 font-bold md:col-span-2">
+        <i data-lucide="x" class="mr-2 w-6 h-6"></i> 안내 종료
+      </button>
+    </div>
+
+    <!-- 음성 대화 패널 -->
+    <div id="voice-status-panel" class="hidden mt-6 p-6 bg-blue-50 border-2 border-blue-200 rounded-xl relative">
+      <button onclick="stopVoiceCommand()"
+        class="absolute top-4 right-4 p-2 bg-red-100 text-red-600 rounded-full hover:bg-red-200 shadow-sm"><i
+          data-lucide="x" class="w-5 h-5"></i></button>
+      <div class="flex items-center gap-3 mb-2">
+        <i data-lucide="mic" id="voice-mic-icon" class="w-8 h-8 text-blue-600"></i>
+        <p id="voice-status-text" class="text-xl text-blue-800 font-bold">듣고 있습니다...</p>
+      </div>
+      <p id="voice-transcript" class="text-lg text-gray-700 italic hidden mt-2 ml-11"></p>
+    </div>
+  </div>
+</body>
+
+</html>

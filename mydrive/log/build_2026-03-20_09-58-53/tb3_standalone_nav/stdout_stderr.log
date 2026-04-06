@@ -1,0 +1,64 @@
+[ 33%] Built target tb3_standalone_core
+[ 46%] Built target a_star_planner_server
+[ 60%] Built target dwa_controller_server
+[ 73%] Built target ekf_node
+[ 86%] Built target amcl_node
+[35m[1mConsolidate compiler generated dependencies of target bt_navigator[0m
+[ 93%] [32mBuilding CXX object CMakeFiles/bt_navigator.dir/src/bt/bt_navigator.cpp.o[0m
+[01m[K/home/shcho/mydrivesim/src/tb3_standalone_nav/src/bt/bt_navigator.cpp:[m[K In member function ‘[01m[Kvirtual void tb3_standalone_nav::bt::ComputePathToPoseAction::on_result(const rclcpp_action::ClientGoalHandle<nav2_msgs::action::NavigateToPose>::WrappedResult&)[m[K’:
+[01m[K/home/shcho/mydrivesim/src/tb3_standalone_nav/src/bt/bt_navigator.cpp:53:89:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kresult[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+   53 | [01;35m[Kp_action::ClientGoalHandle<NavigateToPose>::WrappedResult & result[m[K) override {
+      | [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+
+[100%] [32m[1mLinking CXX executable bt_navigator[0m
+[100%] Built target bt_navigator
+-- Install configuration: ""
+-- Installing: /home/shcho/mydrivesim/install/tb3_standalone_nav/include
+-- Installing: /home/shcho/mydrivesim/install/tb3_standalone_nav/include/tb3_standalone_nav
+-- Installing: /home/shcho/mydrivesim/install/tb3_standalone_nav/include/tb3_standalone_nav/bt
+-- Installing: /home/shcho/mydrivesim/install/tb3_standalone_nav/include/tb3_standalone_nav/bt/bt_action_node.hpp
+-- Installing: /home/shcho/mydrivesim/install/tb3_standalone_nav/include/tb3_standalone_nav/planner
+-- Installing: /home/shcho/mydrivesim/install/tb3_standalone_nav/include/tb3_standalone_nav/planner/a_star_planner_server.hpp
+-- Installing: /home/shcho/mydrivesim/install/tb3_standalone_nav/include/tb3_standalone_nav/core
+-- Installing: /home/shcho/mydrivesim/install/tb3_standalone_nav/include/tb3_standalone_nav/core/lifecycle_node_base.hpp
+-- Installing: /home/shcho/mydrivesim/install/tb3_standalone_nav/include/tb3_standalone_nav/visibility_control.h
+-- Installing: /home/shcho/mydrivesim/install/tb3_standalone_nav/include/tb3_standalone_nav/estimation
+-- Installing: /home/shcho/mydrivesim/install/tb3_standalone_nav/include/tb3_standalone_nav/estimation/amcl_node.hpp
+-- Installing: /home/shcho/mydrivesim/install/tb3_standalone_nav/include/tb3_standalone_nav/estimation/ekf_node.hpp
+-- Installing: /home/shcho/mydrivesim/install/tb3_standalone_nav/include/tb3_standalone_nav/controller
+-- Installing: /home/shcho/mydrivesim/install/tb3_standalone_nav/include/tb3_standalone_nav/controller/dwa_controller_server.hpp
+-- Installing: /home/shcho/mydrivesim/install/tb3_standalone_nav/include/tb3_standalone_nav/costmap
+-- Installing: /home/shcho/mydrivesim/install/tb3_standalone_nav/include/tb3_standalone_nav/costmap/edt.hpp
+-- Installing: /home/shcho/mydrivesim/install/tb3_standalone_nav/include/tb3_standalone_nav/costmap/costmap_2d.hpp
+-- Installing: /home/shcho/mydrivesim/install/tb3_standalone_nav/include/tb3_standalone_nav/costmap/dynamic_obstacle_layer.hpp
+-- Installing: /home/shcho/mydrivesim/install/tb3_standalone_nav/share/tb3_standalone_nav/behavior_trees
+-- Installing: /home/shcho/mydrivesim/install/tb3_standalone_nav/share/tb3_standalone_nav/behavior_trees/navigate_to_pose.xml
+-- Installing: /home/shcho/mydrivesim/install/tb3_standalone_nav/share/tb3_standalone_nav/launch
+-- Installing: /home/shcho/mydrivesim/install/tb3_standalone_nav/share/tb3_standalone_nav/launch/tb3_nav_launch.py
+-- Installing: /home/shcho/mydrivesim/install/tb3_standalone_nav/lib/libtb3_standalone_core.so
+-- Set runtime path of "/home/shcho/mydrivesim/install/tb3_standalone_nav/lib/libtb3_standalone_core.so" to ""
+-- Installing: /home/shcho/mydrivesim/install/tb3_standalone_nav/lib/tb3_standalone_nav/a_star_planner_server
+-- Set runtime path of "/home/shcho/mydrivesim/install/tb3_standalone_nav/lib/tb3_standalone_nav/a_star_planner_server" to ""
+-- Installing: /home/shcho/mydrivesim/install/tb3_standalone_nav/lib/tb3_standalone_nav/dwa_controller_server
+-- Set runtime path of "/home/shcho/mydrivesim/install/tb3_standalone_nav/lib/tb3_standalone_nav/dwa_controller_server" to ""
+-- Installing: /home/shcho/mydrivesim/install/tb3_standalone_nav/lib/tb3_standalone_nav/ekf_node
+-- Set runtime path of "/home/shcho/mydrivesim/install/tb3_standalone_nav/lib/tb3_standalone_nav/ekf_node" to ""
+-- Installing: /home/shcho/mydrivesim/install/tb3_standalone_nav/lib/tb3_standalone_nav/amcl_node
+-- Set runtime path of "/home/shcho/mydrivesim/install/tb3_standalone_nav/lib/tb3_standalone_nav/amcl_node" to ""
+-- Installing: /home/shcho/mydrivesim/install/tb3_standalone_nav/lib/tb3_standalone_nav/bt_navigator
+-- Set runtime path of "/home/shcho/mydrivesim/install/tb3_standalone_nav/lib/tb3_standalone_nav/bt_navigator" to ""
+-- Installing: /home/shcho/mydrivesim/install/tb3_standalone_nav/share/ament_index/resource_index/package_run_dependencies/tb3_standalone_nav
+-- Installing: /home/shcho/mydrivesim/install/tb3_standalone_nav/share/ament_index/resource_index/parent_prefix_path/tb3_standalone_nav
+-- Installing: /home/shcho/mydrivesim/install/tb3_standalone_nav/share/tb3_standalone_nav/environment/ament_prefix_path.sh
+-- Installing: /home/shcho/mydrivesim/install/tb3_standalone_nav/share/tb3_standalone_nav/environment/ament_prefix_path.dsv
+-- Installing: /home/shcho/mydrivesim/install/tb3_standalone_nav/share/tb3_standalone_nav/environment/path.sh
+-- Installing: /home/shcho/mydrivesim/install/tb3_standalone_nav/share/tb3_standalone_nav/environment/path.dsv
+-- Installing: /home/shcho/mydrivesim/install/tb3_standalone_nav/share/tb3_standalone_nav/local_setup.bash
+-- Installing: /home/shcho/mydrivesim/install/tb3_standalone_nav/share/tb3_standalone_nav/local_setup.sh
+-- Installing: /home/shcho/mydrivesim/install/tb3_standalone_nav/share/tb3_standalone_nav/local_setup.zsh
+-- Installing: /home/shcho/mydrivesim/install/tb3_standalone_nav/share/tb3_standalone_nav/local_setup.dsv
+-- Installing: /home/shcho/mydrivesim/install/tb3_standalone_nav/share/tb3_standalone_nav/package.dsv
+-- Installing: /home/shcho/mydrivesim/install/tb3_standalone_nav/share/ament_index/resource_index/packages/tb3_standalone_nav
+-- Installing: /home/shcho/mydrivesim/install/tb3_standalone_nav/share/tb3_standalone_nav/cmake/tb3_standalone_navConfig.cmake
+-- Installing: /home/shcho/mydrivesim/install/tb3_standalone_nav/share/tb3_standalone_nav/cmake/tb3_standalone_navConfig-version.cmake
+-- Installing: /home/shcho/mydrivesim/install/tb3_standalone_nav/share/tb3_standalone_nav/package.xml

@@ -1,0 +1,88 @@
+/* slam.css */
+:root {
+    --slam-blue: #3b82f6;
+    --slam-green: #10b981;
+    --slam-red: #ef4444;
+    --slam-bg: #0f172a;
+    --panel-bg: rgba(30, 41, 59, 0.8);
+}
+
+.slam-content-grid {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 20px;
+    height: calc(100vh - 180px);
+}
+
+.slam-side-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* 캔버스 영역 */
+#slam-canvas-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #000; /* Rviz 스타일 */
+    border-radius: 12px;
+    border: 1px solid #334155;
+    overflow: hidden;
+    cursor: grab;
+}
+
+#slam-canvas-container:active { cursor: grabbing; }
+#slamCanvas { display: block; }
+
+/* HUD 카드 */
+.slam-card {
+    background: var(--panel-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    border-radius: 10px;
+    padding: 15px;
+    color: #f1f5f9;
+}
+
+.slam-card strong {
+    display: block;
+    color: var(--slam-blue);
+    font-size: 12px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 4px;
+}
+
+.status-row { font-family: monospace; font-size: 13px; margin-bottom: 4px; }
+.status-value { color: var(--slam-green); font-weight: bold; float: right; }
+
+/* 키보드 배지 */
+#key-display { display: flex; gap: 6px; margin-top: 10px; }
+.key-badge {
+    width: 32px; height: 32px; background: #334155; border: 1px solid #475569;
+    border-radius: 6px; display: flex; align-items: center; justify-content: center;
+    color: #94a3b8; font-weight: bold; transition: 0.1s;
+}
+.key-badge.active {
+    background: var(--slam-blue); color: white; border-color: white;
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.6); transform: translateY(2px);
+}
+
+/* 로그 터미널 */
+.log-container {
+    flex: 1; background: #000; border: 1px solid #1e293b; border-radius: 8px;
+    padding: 12px; font-family: monospace; font-size: 11px; color: #10b981;
+    overflow-y: auto; line-height: 1.5;
+}
+
+/* 캔버스 오버레이 */
+.slam-overlay {
+    position: absolute; top: 15px; left: 15px; z-index: 10;
+    pointer-events: none; display: flex; flex-direction: column; gap: 10px;
+}
+
+/* 버튼 색상 */
+.tool-button.start { background: var(--slam-green); color: white; border: none; }
+.tool-button.stop { background: var(--slam-red); color: white; border: none; }
+.tool-button.save { background: var(--slam-blue); color: white; border: none; }

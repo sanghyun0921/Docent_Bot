@@ -1,0 +1,2 @@
+Invoking command in '/home/shcho/mydrivesim/build/tb3_standalone_nav': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/shcho/mydrivesim/build/tb3_standalone_nav -- -j2 -l2
+Invoked command in '/home/shcho/mydrivesim/build/tb3_standalone_nav' returned '2': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/shcho/mydrivesim/build/tb3_standalone_nav -- -j2 -l2

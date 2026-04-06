@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map Editor Pro - Museum Guide Admin</title>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/map-editor.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/roslib@1/build/roslib.min.js"></script>
+
+    <!-- ★ 방향 설정 버튼 전용 추가 스타일 -->
+
+</head>
+<body class="app-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-title">Museum Guide</div>
+            <div class="sidebar-subtitle">Control Panel</div>
+        </div>
+         <nav class="sidebar-nav">
+                <a href="/admin">
+                    <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" /><rect x="14" y="3" width="7" height="7" /><rect x="14" y="14" width="7" height="7" /><rect x="3" y="14" width="7" height="7" /></svg>
+                    Dashboard
+                </a>
+                <a href="/slam">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /><circle cx="12" cy="12" r="3" /></svg>
+                    SLAM Mapping
+                </a>
+                <a href="/map-editor" class="active">
+                    <svg class="icon" viewBox="0 0 24 24"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6" /><line x1="8" y1="2" x2="8" y2="18" /><line x1="16" y1="6" x2="16" y2="22" /></svg>
+                    Map Editor
+                </a>
+                <a href="/analytics">
+                    <svg class="icon" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10" /><line x1="12" y1="20" x2="12" y2="4" /><line x1="6" y1="20" x2="6" y2="14" /></svg>
+                    Analytics
+                </a>
+                <hr style="border:0; border-top:1px solid var(--border-color); margin: 20px 0; opacity: 0.3;">
+                <a href="/">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                    Go to Service
+                </a>
+            </nav>
+        <div class="sidebar-footer">© 2026 Museum Guide Bot</div>
+    </aside>
+
+    <main class="main-content">
+        <header class="header">
+            <div style="font-size: 18px; font-weight: bold;">
+                Map Editor
+                <span id="ros-status" style="font-size: 12px; color: gray; margin-left: 10px;">(ROS: Disconnected)</span>
+            </div>
+        </header>
+
+        <div class="toolbar">
+            <div class="toolbar-buttons">
+                <!-- 기본 도구 -->
+                <button class="tool-button active" onclick="selectTool(null)">선택</button>
+                <button class="tool-button artwork" onclick="selectTool('artwork')">미술품 추가</button>
+                <button class="tool-button desk" onclick="selectTool('desk')">안내데스크</button>
+                <button class="tool-button home" onclick="selectTool('home')">로봇 홈</button>
+                <button class="tool-button charge" onclick="selectTool('charge')">충전위치</button>
+                <button class="tool-button delete-tool" onclick="selectTool('delete')">삭제 모드</button>
+
+                <div style="width: 2px; height: 30px; background-color: #374151; margin: 0 10px;"></div>
+
+                <!-- 내비게이션 도구 -->
+                <button class="tool-button btn-nav-init initial_pose" onclick="selectTool('initial_pose')">📍 초기 위치 추정</button>
+                <button class="tool-button btn-nav-goal goal_pose" onclick="selectTool('goal_pose')">🚩 목적지 이동 명령</button>
+
+                <div style="width: 2px; height: 30px; background-color: #374151; margin: 0 10px;"></div>
+
+                <!-- ★ 방향 설정 도구 (신규 추가) -->
+                <button class="tool-button set_yaw" onclick="selectTool('set_yaw')" title="오브젝트를 클릭한 뒤 드래그하여 도착 방향을 설정합니다">
+                    🧭 방향 설정
+                </button>
+            </div>
+
+            <button class="tool-button save-btn" onclick="saveMap()">맵 저장 (YAML)</button>
+        </div>
+
+        <!-- ★ 방향 설정 도구 사용 안내 배너 (set_yaw 선택 시 JS로 표시) -->
+        <div id="yaw-guide-banner" style="
+            display: none;
+            background: linear-gradient(90deg, #78350f, #92400e);
+            color: #fef3c7;
+            padding: 10px 32px;
+            font-size: 13px;
+            border-bottom: 1px solid #b45309;
+        ">
+            🧭 <strong>방향 설정 모드:</strong>
+            방향을 설정할 오브젝트를 클릭한 뒤, 로봇이 바라볼 방향으로 드래그하세요.
+            드래그 방향 = 도착 시 로봇이 바라보는 방향입니다.
+            설정 후 반드시 <strong>맵 저장</strong> 버튼을 눌러주세요.
+            &nbsp;|&nbsp;
+            <strong style="color:#fde68a;">yaw 기준: 오른쪽(동쪽)=0°, 위(북쪽)=90°, 왼쪽(서쪽)=180°, 아래(남쪽)=-90°</strong>
+        </div>
+
+        <div class="canvas-area">
+            <div id="canvasContainer" class="canvas-container">
+                <canvas id="editorCanvas"></canvas>
+                <div id="robot-marker"><div class="robot-arrow"></div></div>
+                <div id="objectsContainer"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 미술품 입력 모달 -->
+    <div id="artworkDialog" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <h3 style="color: #3b82f6; margin-top: 0;">🎨 미술품 상세 정보 등록</h3>
+            <label>작품명</label><input type="text" id="artTitle">
+            <label>작가명</label><input type="text" id="artArtist">
+            <label>작품 설명</label><textarea id="artDesc" rows="4"></textarea>
+            <div style="display: flex; gap: 10px;">
+                <button class="button-primary" style="flex: 1; padding: 12px;" onclick="submitArtwork()">추가하기</button>
+                <button class="button-secondary" style="flex: 1; padding: 12px;" onclick="closeDialog()">취소</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 정보 패널 -->
+    <div id="infoPanel">
+        <div class="info-title">
+            <span id="infoName">객체 이름</span>
+            <button class="close-btn" onclick="document.getElementById('infoPanel').style.display='none'">✖</button>
+        </div>
+        <div class="info-row">ROS X (m): <span id="infoRosX" class="info-val" style="color:#3b82f6;"></span></div>
+        <div class="info-row">ROS Y (m): <span id="infoRosY" class="info-val" style="color:#3b82f6;"></span></div>
+        <!-- ★ yaw 정보 표시 행 (JS에서 동적으로 내용 채움) -->
+        <div id="infoYawRow" class="info-row"></div>
+        <div style="margin-top: 12px; padding-top: 10px; border-top: 1px solid #374151; font-size: 12px; color: #6b7280;">
+            🧭 방향 설정 도구로 도착 방향을 설정하세요
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/map-editor.js') }}"></script>
+
+    <!-- ★ 방향 설정 배너 토글 스크립트 -->
+
+</body>
+</html>

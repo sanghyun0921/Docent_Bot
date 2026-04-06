@@ -1,0 +1,6 @@
+[ 33%] Built target tb3_standalone_core
+[ 46%] Built target a_star_planner_server
+[ 60%] Built target dwa_controller_server
+[ 73%] Built target ekf_node
+[ 86%] Built target amcl_node
+[ 93%] [32mBuilding CXX object CMakeFiles/bt_navigator.dir/src/bt/bt_navigator.cpp.o[0m

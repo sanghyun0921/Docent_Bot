@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메인 화면</title>
+    <!-- 외부 라이브러리 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- ★ ROSLIB 추가 (로봇 제어용) ★ -->
+    <script src="https://cdn.jsdelivr.net/npm/roslib@1/build/roslib.min.js"></script>
+    
+    <!-- 전용 스타일 및 스크립트 연결 -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <script src="{{ url_for('static', filename='js/index.js') }}" defer></script>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex flex-col items-center justify-center p-8">
+    
+    <!-- [1] 인원수 선택 팝업 모달 영역 (기존 유지) -->
+    <div id="visitor-modal" class="fixed inset-0 z-[1000] flex items-center justify-center bg-black/60 hidden">
+        <div class="bg-white rounded-3xl shadow-2xl p-10 max-w-sm w-full mx-4 transform transition-all scale-95 opacity-0" id="modal-card">
+            <div class="text-center mb-8">
+                <div class="inline-block p-4 bg-blue-100 rounded-2xl mb-4">
+                    <i data-lucide="users" class="w-8 h-8 text-blue-600"></i>
+                </div>
+                <h2 class="text-2xl font-bold text-gray-800">방문을 환영합니다!</h2>
+                <p class="text-gray-500 mt-2">오늘 관람 인원은 총 몇 명인가요?</p>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3 mb-8">
+                <button onclick="selectVisitorCount('1')" class="visitor-btn border-2 border-gray-100 py-4 rounded-2xl font-bold text-lg hover:border-blue-500 hover:bg-blue-50 transition-all text-gray-700">1명</button>
+                <button onclick="selectVisitorCount('2')" class="visitor-btn border-2 border-gray-100 py-4 rounded-2xl font-bold text-lg hover:border-blue-500 hover:bg-blue-50 transition-all text-gray-700">2명</button>
+                <button onclick="selectVisitorCount('3')" class="visitor-btn border-2 border-gray-100 py-4 rounded-2xl font-bold text-lg hover:border-blue-500 hover:bg-blue-50 transition-all text-gray-700">3명</button>
+                <button onclick="selectVisitorCount('4+')" class="visitor-btn border-2 border-gray-100 py-4 rounded-2xl font-bold text-lg hover:border-blue-500 hover:bg-blue-50 transition-all text-gray-700">4인+</button>
+            </div>
+            
+            <button onclick="closeVisitorModal()" class="w-full py-3 text-gray-400 font-medium hover:text-gray-600 transition-colors">다음에 할게요</button>
+        </div>
+    </div>
+
+    <!-- [2] 로봇 사용 중 알림 팝업 (신규 추가) -->
+    <div id="busy-modal" class="fixed inset-0 z-[2000] flex items-center justify-center bg-black/70 hidden">
+        <div class="bg-white rounded-3xl shadow-2xl p-10 max-w-sm w-full mx-4 text-center">
+            <div class="inline-block p-4 bg-red-100 rounded-2xl mb-4">
+                <i data-lucide="alert-circle" class="w-8 h-8 text-red-600"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-gray-800">로봇 사용 중</h2>
+            <p class="text-gray-500 mt-4 leading-relaxed">죄송합니다.<br>현재 <b>다른 관람객</b>이 로봇을 이용하고 있습니다. 잠시만 기다려 주세요.</p>
+            <button onclick="closeBusyModal()" class="mt-8 w-full py-4 bg-gray-800 text-white rounded-2xl font-bold text-lg hover:bg-gray-700 transition-colors">확인</button>
+        </div>
+    </div>
+
+    <!-- 메인 컨텐츠 영역 -->
+    <div class="bg-white rounded-3xl shadow-2xl p-12 max-w-2xl w-full">
+        <div class="text-center mb-12">
+            <div class="flex justify-center mb-6">
+                <div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-6 rounded-full">
+                    <i data-lucide="bot" class="text-white w-16 h-16"></i>
+                </div>
+            </div>
+            <h1 class="text-4xl font-bold text-gray-800 mb-3">미술관 안내 로봇</h1>
+            <p class="text-xl text-gray-600">원하시는 서비스를 선택해주세요</p>
+        </div>
+
+        <div class="grid grid-cols-1 gap-4 mb-8">
+            <!-- onclick 함수를 tryStartGuide 혹은 점유 확인 로직으로 변경 -->
+            <button onclick="checkAndMoveToStandby()" class="flex items-center h-20 text-xl justify-start px-8 w-full border border-slate-200 rounded-md hover:bg-slate-50 transition-colors">
+                <i data-lucide="map-pin" class="mr-4 w-8 h-8"></i> 대기위치로 이동
+            </button>
+            <button onclick="tryStartGuide('survey.html')" class="flex items-center h-20 text-xl justify-start px-8 w-full border border-slate-200 rounded-md hover:bg-slate-50 transition-colors">
+                <i data-lucide="sparkles" class="mr-4 w-8 h-8"></i> 작품 추천받기
+            </button>
+            <button onclick="tryStartGuide('guide.html', {mode: 'all-artworks', progress: 0})" class="flex items-center h-20 text-xl justify-start px-8 w-full border border-slate-200 rounded-md hover:bg-slate-50 transition-colors">
+                <i data-lucide="frame" class="mr-4 w-8 h-8"></i> 전체 작품 안내 시작
+            </button>
+            <button onclick="tryStartGuide('artwork-list.html')" class="flex items-center h-20 text-xl justify-start px-8 w-full border border-slate-200 rounded-md hover:bg-slate-50 transition-colors">
+                <i data-lucide="search" class="mr-4 w-8 h-8"></i> 특정 작품 안내
+            </button>
+        </div>
+
+        <button onclick="tryStartGuide('listening.html')" class="flex items-center justify-center w-full h-16 text-xl bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-md hover:opacity-90 transition-opacity">
+            <i data-lucide="mic" class="mr-3 w-7 h-7"></i> 음성 명령 사용하기
+        </button>
+    </div>
+</body>
+</html>

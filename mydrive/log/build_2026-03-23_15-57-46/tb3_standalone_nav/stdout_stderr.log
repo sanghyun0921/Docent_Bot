@@ -1,0 +1,15 @@
+[ 29%] Built target tb3_standalone_core
+[ 41%] Built target lifecycle_manager_node
+[35m[1mConsolidate compiler generated dependencies of target dwa_controller_server[0m
+[ 52%] Built target a_star_planner_server
+[ 58%] [32mBuilding CXX object CMakeFiles/dwa_controller_server.dir/src/controller/dwa_controller_server.cpp.o[0m
+[ 70%] Built target ekf_node
+[01m[K/home/shcho/mydrivesim/src/tb3_standalone_nav/src/controller/dwa_controller_server.cpp:1:10:[m[K [01;31m[Kfatal error: [m[Ktb3_standalone_nav/controller/pure_pursuit_controller_server.hpp: No such file or directory
+    1 | #include [01;31m[K"tb3_standalone_nav/controller/pure_pursuit_controller_server.hpp"[m[K
+      |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+compilation terminated.
+gmake[2]: *** [CMakeFiles/dwa_controller_server.dir/build.make:76: CMakeFiles/dwa_controller_server.dir/src/controller/dwa_controller_server.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:201: CMakeFiles/dwa_controller_server.dir/all] Error 2
+gmake[1]: *** Waiting for unfinished jobs....
+[ 82%] Built target amcl_node
+gmake: *** [Makefile:146: all] Error 2

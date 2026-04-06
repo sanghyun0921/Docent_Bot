@@ -1,0 +1,261 @@
+/* --- [1. 관리자 페이지 공통 레이아웃] --- */
+:root {
+    --bg-dark: #0f172a;
+    --panel-dark: #1a1f2e;
+    --border-color: #374151;
+    --text-gray: #9ca3af;
+    --blue-primary: #3b82f6;
+    --green-success: #10b981;
+    --red-danger: #ef4444;
+}
+
+body {
+    margin: 0; padding: 0;
+    background-color: var(--bg-dark);
+    color: white;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.app-container { display: flex; min-height: 100vh; }
+
+/* 사이드바 */
+.sidebar {
+    width: 260px; background-color: var(--panel-dark);
+    border-right: 1px solid var(--border-color);
+    display: flex; flex-direction: column; padding: 24px; flex-shrink: 0;
+}
+.sidebar-header { margin-bottom: 32px; }
+.sidebar-title { font-size: 20px; font-weight: bold; color: white; }
+.sidebar-subtitle { font-size: 12px; color: var(--text-gray); }
+
+.sidebar-nav { display: flex; flex-direction: column; gap: 4px; flex: 1; }
+.sidebar-nav a {
+    display: flex; align-items: center; padding: 12px;
+    color: var(--text-gray); text-decoration: none; border-radius: 8px;
+    font-size: 14px; transition: 0.2s;
+}
+.sidebar-nav a:hover, .sidebar-nav a.active {
+    background-color: rgba(59, 130, 246, 0.1);
+    color: var(--blue-primary);
+}
+
+/* 아이콘 스타일 */
+.icon { width: 20px; height: 20px; margin-right: 12px; stroke: currentColor; fill: none; stroke-width: 2; }
+.icon-lg { width: 24px; height: 24px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+/* 메인 영역 */
+.main-content { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+.header {
+    height: 64px; border-bottom: 1px solid var(--border-color);
+    display: flex; align-items: center; justify-content: space-between; padding: 0 32px;
+}
+.header-title { font-size: 18px; font-weight: 600; }
+.header-subtitle { font-size: 12px; color: var(--text-gray); margin-left: 8px; }
+.content { padding: 32px; overflow-y: auto; }
+
+/* --- [2. 대시보드 컴포넌트] --- */
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-bottom: 32px; }
+.stat-card {
+    background-color: var(--panel-dark); border: 1px solid var(--border-color);
+    padding: 20px; border-radius: 12px; display: flex; align-items: center; gap: 16px;
+}
+.stat-icon { width: 48px; height: 48px; border-radius: 10px; display: flex; align-items: center; justify-content: center; }
+
+.dashboard-grid { display: grid; grid-template-columns: 1.2fr 2.5fr 1.2fr; gap: 20px; }
+
+/* 패널: 내부 요소를 세로로 배치하도록 flex 설정 */
+.panel { 
+    background-color: var(--panel-dark); 
+    border: 1px solid var(--border-color); 
+    border-radius: 12px; 
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+}
+.panel-title { font-size: 16px; font-weight: bold; margin-bottom: 20px; }
+
+/* 맵 컨테이너 */
+.map-container {
+    width: 100%; height: 600px; background-color: #0f1729;
+    position: relative; overflow: hidden; border-radius: 12px; border: 1px solid #1e293b;
+    display: flex; align-items: center; justify-content: center;
+}
+#map-wrapper { position: relative; transform-origin: center; transition: transform 0.2s ease-out; }
+.map-canvas { display: block; }
+
+/* 맵 객체 아이콘 */
+.map-object {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    z-index: 10;
+    padding: 10px;
+    min-width: 80px;
+    /* 맵 에디터와 위치 정렬을 맞추기 위한 트랜스폼 (필요시 조절) */
+    transform: translate(-50%, -50%); 
+}
+/* 아이콘 크기 조절 */
+.map-object .icon {
+    width: 24px;
+    height: 24px;
+    stroke: currentColor;
+    stroke-width: 2;
+    fill: none;
+    margin-bottom: 5px;
+}
+
+/* 텍스트 스타일 */
+.object-label {
+    font-weight: bold;
+    font-size: 12px;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+}
+
+.object-sub {
+    font-size: 10px;
+    opacity: 0.9;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+}
+
+.artwork-object { background: #7c3aed; color: white; }
+.desk-object { background: #2563eb; color: white; }
+.home-object { background: #059669; color: white; }
+.charge-object { background: #d97706; color: white; }
+
+/* 로봇 마커 */
+#robot-marker {
+    position: absolute; width: 0; height: 0; z-index: 999; 
+    pointer-events: none; display: none;
+    transition: left 0.1s linear, top 0.1s linear, transform 0.1s linear;
+}
+.robot-arrow {
+    width: 0; height: 0; border-left: 12px solid transparent; border-right: 12px solid transparent;
+    border-bottom: 30px solid var(--blue-primary);
+    position: relative; left: -12px; top: -15px; 
+    filter: drop-shadow(0 0 8px rgba(0,0,0,0.8));
+}
+
+/* --- [3. 하단 버튼 그룹 - 패널 내부용] --- */
+.button-group {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px; /* 지도와의 간격 */
+    justify-content: center;
+}
+
+.button {
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: 0.2s;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.button-danger { background-color: var(--red-danger); color: white; }
+.button-primary { background-color: var(--blue-primary); color: white; }
+.button-secondary { background-color: #334155; color: white; }
+.btn-manual-active { background-color: var(--red-danger) !important; box-shadow: 0 0 15px rgba(239, 68, 68, 0.5); animation: pulse-red 2s infinite; }
+
+/* --- [4. 기타 UI] --- */
+.camera-container {
+    width: 100%; height: 250px; background: #000; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;
+}
+#camera-feed { width: 100%; height: 100%; object-fit: contain; display: none; }
+.camera-off-msg { color: #475569; font-size: 14px; position: absolute; }
+
+.control-guide {
+    position: absolute; bottom: 20px; right: 20px; z-index: 10; background: rgba(15, 23, 42, 0.9);
+    padding: 15px; border-radius: 10px; border: 1px solid var(--red-danger); font-size: 12px; color: #fff; display: none;
+}
+
+.bg-blue { background: rgba(59, 130, 246, 0.1); }
+.bg-green { background: rgba(16, 185, 129, 0.1); }
+.bg-red { background: rgba(239, 68, 68, 0.1); }
+.text-blue { color: var(--blue-primary); }
+.text-green { color: var(--green-success); }
+.text-red { color: var(--red-danger); }
+
+/* --- Dashboard 내 Mini Settings 스타일 --- */
+.robot-mini-settings {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.form-label { display: block; font-size: 12px; color: var(--text-gray); margin-bottom: 4px; }
+.form-input {
+    width: 100%; padding: 8px; background: #0f1729; border: 1px solid var(--border-color);
+    color: white; border-radius: 6px; box-sizing: border-box; font-size: 13px;
+}
+
+.slider-container { display: flex; align-items: center; gap: 10px; }
+.slider-input {
+    flex: 1; height: 4px; border-radius: 2px; outline: none; cursor: pointer;
+    -webkit-appearance: none; appearance: none; background: #0f1729;
+}
+
+/* 슬라이더 핸들 스타일 */
+.slider-input::-webkit-slider-thumb {
+    -webkit-appearance: none; width: 14px; height: 14px;
+    background: var(--blue-primary); border-radius: 50%; border: 2px solid white;
+}
+
+.value-display {
+    background-color: #0f1729; border: 1px solid var(--border-color);
+    border-radius: 4px; padding: 4px; text-align: center; color: white; font-size: 11px;
+}
+
+/* 주행 중 (Driving) - 활기찬 느낌 */
+.status-driving {
+    background-color: var(--blue-primary);
+    animation: blink-fast 0.8s infinite;
+}
+
+/* 경로 탐색 중 (Navigating) - 생각하는 느낌 */
+.status-navigating {
+    background-color: #6366f1; /* Indigo */
+    animation: pulse-slow 2s infinite;
+}
+
+/* 가상 로봇 마커 (초록색 화살표) */
+.v-robot-marker {
+    position: absolute; width: 0; height: 0; z-index: 800;
+    transition: left 0.1s linear, top 0.1s linear, transform 0.1s linear;
+    cursor: pointer;
+}
+.v-robot-marker .robot-arrow {
+    border-bottom-color: var(--green-success) !important;
+}
+.v-robot-label {
+    position: absolute; top: -40px; left: -15px; background: var(--green-success);
+    color: white; padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: bold;
+}
+
+/* 가상 로봇 리스트 아이템 */
+.v-robot-item {
+    background: rgba(15, 23, 41, 0.5); border: 1px solid var(--border-color);
+    padding: 12px; border-radius: 10px; cursor: pointer; transition: 0.2s;
+}
+.v-robot-item.active { border-color: #fbbf24; background: rgba(251, 191, 36, 0.1); }
+.selected-v-robot .robot-arrow { border-bottom-color: #fbbf24 !important; }
+.selected-v-robot .v-robot-label { background: #fbbf24; color: black; }
+
+@keyframes blink-fast {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+@keyframes pulse-slow {
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.2); opacity: 0.5; }
+}
+
