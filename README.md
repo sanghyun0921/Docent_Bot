@@ -75,7 +75,7 @@ python app.py
 ---
 [🇰🇷 한국어 설명은 위에 있습니다. (Korean version is above)](#-한국어-버전-korean-version)
 
-# AI Smart Museum Docent Robot 🤖🎨
+# AI Smart Museum Docent Robot 🤖
 
 A web-based smart docent system utilizing ROS 2 (Humble) based TurtleBot3 and Google Gemini AI to provide personalized artwork commentary and guidance to museum visitors.
 
