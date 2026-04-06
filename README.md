@@ -72,30 +72,30 @@ python app.py
 ## 🔒 보안
 * 이 프로젝트는 `.gitignore`를 통해 `.env` 파일을 관리합니다. `.env` 파일에 포함된 비밀번호 및 API 키가 깃허브 등에 유출되지 않도록 주의하세요.
 
----------------------------------------------------------------------------------------------------------------------
-[🇰🇷 한국어 설명은 위에 있습니다. (Korean version is below)](#-한국어-버전-korean-version)
+---
+[🇰🇷 한국어 설명은 위에 있습니다. (Korean version is above)](#-한국어-버전-korean-version)
 
-# AI Smart Museum Docent Robot 🤖
+# AI Smart Museum Docent Robot 🤖🎨
 
-A web-based smart docent system that utilizes a ROS 2 (Humble)-based TurtleBot3 and Google Gemini AI to provide personalized artwork commentary and guidance to museum visitors.
+A web-based smart docent system utilizing ROS 2 (Humble) based TurtleBot3 and Google Gemini AI to provide personalized artwork commentary and guidance to museum visitors.
 
 ## 🌟 Key Features
-* **Intelligent AI Docent**: Utilizes the Google Gemini API to naturally answer visitors' questions and provide information about the artworks.
-* **Personalized Course Recommendation**: Recommends personalized exhibition viewing courses based on a survey of the user's age group, gender, mood, etc.
-* **Web-based Robot Control and SLAM/Navigation Management**: 
-  * Starts/stops the SLAM process and saves the map via the web through SSH access to the Remote PC and the robot (TurtleBot3).
-  * Monitors the saved map (PGM/YAML) in real-time on the web dashboard and allows editing of object (artwork) locations.
-* **Real-time Statistics and Dashboard (Admin)**: 
-  * Visually displays the cumulative number of visitors, stay time per artwork, real-time popular trends, and museum congestion.
+* **Intelligent AI Docent**: Utilizes the Google Gemini API to answer visitors' questions about artworks naturally.
+* **Personalized Course Recommendation**: Surveys the user's age group, gender, and current mood to recommend a customized exhibition viewing course.
+* **Web-based Robot Control & SLAM/Navigation Management**: 
+  * Starts/stops SLAM processes and saves maps via the web using SSH access to the Remote PC and robot (TurtleBot3).
+  * Real-time viewing of saved maps (PGM/YAML) on the web dashboard with the ability to edit object (artwork) locations.
+* **Real-time Statistics & Dashboard (Admin)**: 
+  * Visually displays the cumulative number of visitors, dwell time per artwork, real-time popular trends, and museum congestion levels.
 
 ## 🛠️ Tech Stack
-* **Backend**: Python, Flask, Flask-SQLAlchemy, paramiko (SSH Communication)
+* **Backend**: Python, Flask, Flask-SQLAlchemy, paramiko (SSH communication)
 * **Database**: MySQL (PyMySQL)
 * **AI API**: Google Generative AI (Gemini 3.1 Flash-Lite)
 * **Frontend**: HTML/CSS, Vanilla JS, ROSLIB.js
-* **Robotics**: ROS 2 Humble, TurtleBot3 Waffle Pi, Cartographer, Nav2(reference) 
+* **Robotics**: ROS 2 Humble, TurtleBot3 Waffle Pi, Cartographer, Nav2 
 
-## ⚙️ Installation and Execution Guide
+## ⚙️ Installation & Execution
 
 ### 1. Virtual Environment Setup & Package Installation
 ```bash
@@ -106,12 +106,14 @@ python -m venv venv
 source venv/bin/activate
 
 pip install -r requirements.txt
-2. Environment Variables Configuration
-Create a .env file in the project root directory and fill in the configuration values below according to your environment. (Note: You can copy the .env.example file.)
+```
 
-Ini, TOML
-# .env Example
-GEMINI_API_KEY=your_gemini_api_key
+### 2. Environment Variables Setup
+Create a `.env` file in the project root directory and fill in the settings appropriate for your environment. (Note: Copy the `.env.example` file to get started.)
+
+```ini
+# .env example
+GEMINI_API_KEY=YOUR_GEMINI_API_KEY
 DB_URI=mysql+pymysql://newuser:1234@192.168.0.7:3306/museum_db
 ROBOT_IP=192.168.0.21
 ROBOT_USER=pi
@@ -120,32 +122,29 @@ REMOTE_PC_IP=192.168.0.29
 REMOTE_PC_USER=teamone
 REMOTE_PC_PW=1234
 REMOTE_TARGET_DIR=/home/teamone
-3. Database Setup
-The DB file and tables are automatically generated within app.py when the app is executed. The MySQL Server specified in the DB_URI path in the .env file must be running.
+```
 
-4. Run the Server
-Bash
+### 3. Database Setup
+The database file and tables will be automatically generated inside `app.py` when the app runs. Make sure the MySQL Server corresponding to the `DB_URI` in the `.env` file is running.
+
+### 4. Run Server
+```bash
 python app.py
-After running the server, you can access the main web screen by navigating to http://localhost:5000 (or the designated IP/port for your environment).
+```
+After starting the server, you can access the main web screen by connecting to http://localhost:5000 (or the IP/port specified by your environment).
 
-🤖 Robot and ROS 2 Command Reference
-These are the primary ROS 2 commands that need to be executed on the Remote PC and the robot separately from the web server. (Run directly in the terminal or execute via the web dashboard).
+## 🤖 Robot & ROS 2 Command Guidelines
+Here are the essential ROS 2 commands that need to be run on the Remote PC and the robot, separate from the web server. (Execute them directly in the terminal or via the web dashboard).
 
-[Remote PC]
+**[Remote PC]**
+* Run Navigation: `ros2 launch turtlebot3_navigation2 navigation2.launch.py map:=/home/teamone/art_gallery.yaml`
+* Custom Autonomous Driving Node: `ros2 launch tb3_standalone_nav tb3_nav_launch.py`
 
-Run Navigation: ros2 launch turtlebot3_navigation2 navigation2.launch.py map:=/home/teamone/art_gallery.yaml
+**[Robot (TurtleBot3)]**
+* Bringup: `ros2 launch turtlebot3_bringup robot.launch.py`
+* WebSocket: `ros2 launch rosbridge_server rosbridge_websocket_launch.xml`
+* Camera Node: `ros2 run v4l2_camera v4l2_camera_node --ros-args -p image_size:="[320, 240]" -p time_per_frame:="[1, 10]"`
+* TTS Node: `python3 robot_tts.py`
 
-Autonomous Driving Custom Node: ros2 launch tb3_standalone_nav tb3_nav_launch.py
-
-[Robot (TurtleBot3)]
-
-Bringup: ros2 launch turtlebot3_bringup robot.launch.py
-
-WebSocket: ros2 launch rosbridge_server rosbridge_websocket_launch.xml
-
-Camera Node: ros2 run v4l2_camera v4l2_camera_node --ros-args -p image_size:="[320, 240]" -p time_per_frame:="[1, 10]"
-
-TTS Node: python3 robot_tts.py
-
-🔒 Security
-This project manages the .env file through .gitignore. Please be careful not to leak the passwords and API keys contained in the .env file to GitHub or elsewhere.
+## 🔒 Security
+* This project manages the `.env` file via `.gitignore`. Be careful not to leak passwords or API keys contained in the `.env` file to GitHub or elsewhere.
