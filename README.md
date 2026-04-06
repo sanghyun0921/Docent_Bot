@@ -72,39 +72,33 @@ python app.py
 ## 🔒 보안
 * 이 프로젝트는 `.gitignore`를 통해 `.env` 파일을 관리합니다. `.env` 파일에 포함된 비밀번호 및 API 키가 깃허브 등에 유출되지 않도록 주의하세요.
 
------------------------------------------------------------------------------------------------------------------
-AI Smart Museum Docent Robot 🤖
+---------------------------------------------------------------------------------------------------------------------
+[🇰🇷 한국어 설명은 위에 있습니다. (Korean version is below)](#-한국어-버전-korean-version)
+
+# AI Smart Museum Docent Robot 🤖
+
 A web-based smart docent system that utilizes a ROS 2 (Humble)-based TurtleBot3 and Google Gemini AI to provide personalized artwork commentary and guidance to museum visitors.
 
-🌟 Key Features
-Intelligent AI Docent: Utilizes the Google Gemini API to naturally answer visitors' questions and provide information about the artworks.
+## 🌟 Key Features
+* **Intelligent AI Docent**: Utilizes the Google Gemini API to naturally answer visitors' questions and provide information about the artworks.
+* **Personalized Course Recommendation**: Recommends personalized exhibition viewing courses based on a survey of the user's age group, gender, mood, etc.
+* **Web-based Robot Control and SLAM/Navigation Management**: 
+  * Starts/stops the SLAM process and saves the map via the web through SSH access to the Remote PC and the robot (TurtleBot3).
+  * Monitors the saved map (PGM/YAML) in real-time on the web dashboard and allows editing of object (artwork) locations.
+* **Real-time Statistics and Dashboard (Admin)**: 
+  * Visually displays the cumulative number of visitors, stay time per artwork, real-time popular trends, and museum congestion.
 
-Personalized Course Recommendation: Recommends personalized exhibition viewing courses based on a survey of the user's age group, gender, mood, etc.
+## 🛠️ Tech Stack
+* **Backend**: Python, Flask, Flask-SQLAlchemy, paramiko (SSH Communication)
+* **Database**: MySQL (PyMySQL)
+* **AI API**: Google Generative AI (Gemini 3.1 Flash-Lite)
+* **Frontend**: HTML/CSS, Vanilla JS, ROSLIB.js
+* **Robotics**: ROS 2 Humble, TurtleBot3 Waffle Pi, Cartographer, Nav2(reference) 
 
-Web-based Robot Control and SLAM/Navigation Management:
+## ⚙️ Installation and Execution Guide
 
-Starts/stops the SLAM process and saves the map via the web through SSH access to the Remote PC and the robot (TurtleBot3).
-
-Monitors the saved map (PGM/YAML) in real-time on the web dashboard and allows editing of object (artwork) locations.
-
-Real-time Statistics and Dashboard (Admin):
-
-Visually displays the cumulative number of visitors, stay time per artwork, real-time popular trends, and museum congestion.
-
-🛠️ Tech Stack
-Backend: Python, Flask, Flask-SQLAlchemy, paramiko (SSH Communication)
-
-Database: MySQL (PyMySQL)
-
-AI API: Google Generative AI (Gemini 3.1 Flash-Lite)
-
-Frontend: HTML/CSS, Vanilla JS, ROSLIB.js
-
-Robotics: ROS 2 Humble, TurtleBot3 Waffle Pi, Cartographer, Nav2(reference)
-
-⚙️ Installation and Execution Guide
-1. Virtual Environment Setup & Package Installation
-Bash
+### 1. Virtual Environment Setup & Package Installation
+```bash
 python -m venv venv
 # Windows:
 .\venv\Scripts\activate
